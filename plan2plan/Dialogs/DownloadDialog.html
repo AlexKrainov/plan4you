@@ -1,0 +1,62 @@
+﻿<div id="downloadDialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Скачивание файла</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p> Чтобы скачать чек-лист, оставьте, пожалуйста, адрес своей электронной почты </p>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input id="person_mail" type="email" name="email" class="form-control" placeholder="Введите e-mail адрес" aria-describedby="inputGroupPrepend" required>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" onclick="file_worker.download_file(this);">
+                            <i class="download icon"></i>
+                            получить pdf
+                        </button>
+                    </div>
+                </div>
+                <div class="invalid-feedback">
+                    Пожалуйста, введите адрес электронной почты.
+                </div>
+                <small id="emailHelp" class="form-text text-muted">Никакого спама, только новости о новых чек-листах.</small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div id="downloadDialog" class="ui mini modal transition hidden ">
+    <div class="ui form download" style="margin-top: 10px;">
+        <div class="ui header centered">
+            Скачивание файла
+        </div>
+        <div class="content ui form" style="margin: 20px;">
+            <div class="ui sub header" style="margin-bottom: 15px;"> Чтобы скачать чек-лист, оставьте, пожалуйста, адрес своей электронной почты </div>
+
+            <div class="ui action input field" style="margin-bottom: 0px;">
+                <input id="person_mail" type="email" name="email" placeholder="Введите e-mail адрес ">
+                <div class="ui teal submit button" id="downloadButton" onclick="downloadFile(this);">
+                    <i class="download icon"></i>
+                    получить pdf
+                </div>
+            </div>
+            <span class="tip">
+                Никакого спама, только новости о новых чек-листах
+            </span>
+
+            <div class="ui error message"></div>
+
+        </div>
+        <div class="actions">
+            <div class="ui positive icon button">
+                Закрыть
+            </div>
+        </div>
+    </div>
+</div>-->

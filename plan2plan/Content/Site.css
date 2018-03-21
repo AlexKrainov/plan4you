@@ -1,0 +1,21 @@
+﻿/*#region images pdf */
+
+.action-file a:nth-child(2) {
+    margin-left: 5px;
+}
+
+.action-file a:hover {
+    font-size: x-large;
+}
+
+
+/*#endregion */
+
+
+/*#region action */
+
+a.not_selected {
+    color: gray;
+}
+
+/*#endregion */

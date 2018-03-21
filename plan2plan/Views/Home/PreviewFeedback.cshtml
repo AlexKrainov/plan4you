@@ -1,0 +1,53 @@
+﻿<!--==========================
+  Feedback Section
+============================-->
+<section id="contact" class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+    <div class="container">
+        <div class="form">
+            <div id="sendmessage">Your message has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            @using (Ajax.BeginForm(
+            actionName: "Create",
+            controllerName: "Feedback",
+            routeValues: null,
+            ajaxOptions: new AjaxOptions
+            {
+                UpdateTargetId = "results_feedback",
+                LoadingElementId = "loading",
+                LoadingElementDuration = 800,
+                InsertionMode = InsertionMode.Replace,
+                OnSuccess = "onSuccessFeedback",
+                OnFailure = "onFailureFeedback"
+            },
+            htmlAttributes: new { @class = "contactForm", role = "form", id = "feedback_form" }))
+            {
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4"
+                               data-msg="Please enter at least 4 chars" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email"
+                               data-msg="Please enter a valid email" />
+                        <div class="validation"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="message" rows="5" data-rule="required"
+                              data-msg="Please write something for us" placeholder="Message"></textarea>
+                    <div class="validation"></div>
+                </div>
+                <div class="text-center"><button type="submit"> Send Message</button></div>
+            }
+            <div id="loading" style="display: none; color: red;">
+                <div id="preloader"></div>
+            </div>
+            <div id="results_feedback"></div>
+        </div>
+    </div>
+</section>
+@*end feedback*@
+
+<!-- Contact Form JavaScript File -->
+<script src="~/TemplateSite/contactform/contactform.js"></script>
