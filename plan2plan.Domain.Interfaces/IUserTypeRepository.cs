@@ -1,4 +1,5 @@
-﻿using System;
+﻿using plan2plan.Domain.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace plan2plan.Domain.Interfaces
 {
     public interface IUserTypeRepository
     {
+        IEnumerable<UserType> GetUserTypes();
     }
 }

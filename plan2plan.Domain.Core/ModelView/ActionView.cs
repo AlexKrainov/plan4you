@@ -17,10 +17,10 @@ namespace plan2plan.Domain.Core.ModelView
     //  }
     //}
 
-    public class action
+    public class action_view_model
     {
         public List<check_sheet> check_sheets { get; set; }
-        public action()
+        public action_view_model()
         {
             this.check_sheets = new List<check_sheet>();
         }

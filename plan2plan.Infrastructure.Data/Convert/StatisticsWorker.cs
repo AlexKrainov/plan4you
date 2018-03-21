@@ -14,7 +14,7 @@ namespace plan2plan.Infrastructure.Data.Convert
     {
         public Statistics statistic;
         private IStatisticsRepository statisticsRepository;
-        public StatisticsWorker(IStatisticsRepository statisticsRepository, Person_info person_Info, string sessionID)
+        public StatisticsWorker(IStatisticsRepository statisticsRepository, PersonViewModel person_Info, string sessionID)
         {
             this.statisticsRepository = statisticsRepository;
             statistic = new Statistics();

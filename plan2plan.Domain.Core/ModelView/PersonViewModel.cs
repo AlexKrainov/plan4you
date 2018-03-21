@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace plan2plan.Domain.Core.ModelView
 {
-    public class Person_info
+    public class PersonViewModel
     {
         public string referrer { get; set; }
         public string ip { get; set; }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace plan2plan.Domain.Core.ModelView
 {
-    public class FeedbackView
+    public class FeedbackViewModel
     {
         public string name { get; set; }
         [Required]

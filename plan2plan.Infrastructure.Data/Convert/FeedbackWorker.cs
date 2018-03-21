@@ -10,9 +10,9 @@ namespace plan2plan.Infrastructure.Data.Convert
 {
     public class FeedbackWorker
     {
-        private FeedbackView feedbackView;
+        private FeedbackViewModel feedbackView;
 
-        public FeedbackWorker(FeedbackView feedbackView)
+        public FeedbackWorker(FeedbackViewModel feedbackView)
         {
             this.feedbackView = feedbackView;
         }

@@ -24,7 +24,7 @@ namespace plan2plan.Controllers.Components
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<JsonResult> SaveInfo(Person_info id)
+        public async Task<JsonResult> SaveInfo(PersonViewModel id)
         {
             StatisticsWorker convertStatistics = new StatisticsWorker(stattisticsRepository, id, Session.SessionID);
             stattisticsRepository.Create(convertStatistics.statistic);

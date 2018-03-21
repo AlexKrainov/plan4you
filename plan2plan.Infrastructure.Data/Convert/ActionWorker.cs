@@ -11,7 +11,7 @@ namespace plan2plan.Infrastructure.Data.Convert
 {
     public class ActionWorker
     {
-        public action action;
+        public action_view_model action;
 
         private IActionRepository actionRepository;
         private IFileRepository fileRepository;
@@ -24,10 +24,10 @@ namespace plan2plan.Infrastructure.Data.Convert
             this.actionRepository = actionRepository;
             this.fileRepository = fileRepository;
             this.ip = ip;
-            this.action = new action();
+            this.action = new action_view_model();
         }
 
-        public async Task<action> GetActionCheckSheets(int userID = -1)
+        public async Task<action_view_model> GetActionCheckSheets(int userID = -1)
         {
             List<File> files = fileRepository.GetFiles().ToList();
 

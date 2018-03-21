@@ -20,7 +20,7 @@ namespace plan2plan.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(FeedbackView feedbackView)
+        public async Task<ActionResult> Create(FeedbackViewModel feedbackView)
         {
             if (this.ModelState.IsValid == true)
             {
