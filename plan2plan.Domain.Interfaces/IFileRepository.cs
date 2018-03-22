@@ -17,5 +17,6 @@ namespace plan2plan.Domain.Interfaces
         IEnumerable<File> GetFiles();
         IEnumerable<File> GetFilesByRange(int start, int count);
         void SetExistFile(File file, bool isExist);
+        void CreateFilePreview(File file, string pathToFile, string previewType);
     }
 }

@@ -14,6 +14,8 @@ namespace plan2plan.Domain.Core
         public int UserID { get; set; }
         [Required]
         public string SessionID { get; set; }
+        public DateTime? Start { get; set; }
+        public DateTime? Finish { get; set; }
 
         public virtual User User { get; set; }
     }

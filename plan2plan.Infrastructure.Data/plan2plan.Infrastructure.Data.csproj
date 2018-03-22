@@ -62,6 +62,14 @@
     <Compile Include="Migrations\201803181458114_plan2plan.Designer.cs">
       <DependentUpon>201803181458114_plan2plan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803221530251_plan2plan_3.cs" />
+    <Compile Include="Migrations\201803221530251_plan2plan_3.Designer.cs">
+      <DependentUpon>201803221530251_plan2plan_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221554179_plan2plan_4.cs" />
+    <Compile Include="Migrations\201803221554179_plan2plan_4.Designer.cs">
+      <DependentUpon>201803221554179_plan2plan_4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="plat2platContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +95,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803181458114_plan2plan.resx">
       <DependentUpon>201803181458114_plan2plan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221530251_plan2plan_3.resx">
+      <DependentUpon>201803221530251_plan2plan_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221554179_plan2plan_4.resx">
+      <DependentUpon>201803221554179_plan2plan_4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

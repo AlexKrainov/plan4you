@@ -64,28 +64,7 @@
     <!--==========================
       Header
     ============================-->
-    <header id="header">
-        <div class="container">
-            <div id="logo" class="pull-left">
-                <h1><a href="#body" class="scrollto">plan<span>2plan</span></a></h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
-            </div>
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    <li class="menu-active"><a href="#body">Главная</a></li>
-                    @*<li><a href="#about">О проекте</a></li>
-                        <li><a href="#services">Чек-листы</a></li>
-                        <li><a href="#portfolio">Бук-сеты</a></li>
-                        <li><a href="#contact">Напишите нам</a></li>*@
-                    <li>
-                        @Html.Partial("~/Views/_Partial/_Login.cshtml")
-                    </li>
-                </ul>
-            </nav><!-- #nav-menu-container -->
-        </div>
-    </header>
-    <div id="login_container"></div>
+    @{ Html.RenderPartial("~/Views/_Partial/_Header.cshtml"); }
     <!-- #header -->
     <!--==========================
       Intro Section
@@ -155,6 +134,7 @@
     <script src="~/Scripts/statistics.js"></script>
     <script src="~/Scripts/action.js"></script>
     <script src="~/Scripts/site.js"></script>
+    <script src="~/Scripts/user/auth.js"></script>
 
     <script src="~/Scripts/jquery/jquery.unobtrusive-ajax.min.js"></script>
 </body>

@@ -21,5 +21,27 @@ namespace plan2plan.Infrastructure.Data.Components
         {
             return context.Users.FirstOrDefault(x => x.ID == userID && x.Login == login);
         }
+
+        /// <summary>
+        /// Возвращает ID юзера, если его нет возвращает -1
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public int GetUserID(string login, string password)
+        {
+            User user = context.Users.FirstOrDefault(x => x.Login == login && x.Password == password);
+
+            if (user != null)
+            {
+                return user.ID;
+            }
+            return -1;
+        }
+
+        public bool isUserExist(string login, string password)
+        {
+            return context.Users.Any(x => x.Login == login && x.Password == password);
+        }
     }
 }

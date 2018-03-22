@@ -1,0 +1,22 @@
+﻿<header id="header">
+    <div class="container">
+        <div id="logo" class="pull-left">
+            <h1><a href="#body" class="scrollto">plan<span>2plan</span></a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
+        </div>
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-active"><a href="#body">Главная</a></li>
+                @*<li><a href="#about">О проекте</a></li>
+                    <li><a href="#services">Чек-листы</a></li>
+                    <li><a href="#portfolio">Бук-сеты</a></li>
+                    <li><a href="#contact">Напишите нам</a></li>*@
+                <li id="login_container" class="menu-has-children">
+                    @Html.Partial("~/Views/Auth/_LoginPartial.cshtml")
+                </li>
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header>
+<div id="auth_dialog_container"></div>

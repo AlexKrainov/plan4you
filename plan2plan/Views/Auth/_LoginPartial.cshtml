@@ -1,0 +1,28 @@
+﻿@model plan2plan.Controllers.User.Authenticate
+
+@if (Model != null || string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name) == false)
+{
+    if (Model != null && Model.IsAuthenticated == true)
+    {
+        //ToDo: ActionLink to Profil
+        <a href="" onclick="return false;">@Model.UserName</a>
+        @*@Html.ActionLink(Model.UserName, "Index", "Account")*@
+    }
+    else if (string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name) == false)
+    {
+        <a href="" onclick="return false;">@HttpContext.Current.User.Identity.Name</a>
+        @*@Html.ActionLink(HttpContext.Current.User.Identity.Name, "Index", "Account")*@
+    }
+    <ul style="display: none;">
+        <li>
+            @Html.ActionLink("Сгенерировать новые картинки", "PreviewPdfGenerator", "File")
+        </li>
+        <li>
+            @Html.ActionLink("Выход", "LogOut", "Auth", null, new { @style = "color: #51BAA4;" })
+        </li>
+    </ul>
+}
+else
+{
+    <a href="" id="labelShowLoginDialog" onclick="auth.showLoginDialog(); return false;">Войти</a>
+}

@@ -2,8 +2,15 @@
 <div id="auth_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <!--data-ajax-failure="onFailureFeedback"-->
-        <form action="/Auth/LogIn" class="modal-content" data-ajax="true" data-ajax-success="onSuccessLogIn" id="login_form"
-              method="post" role="form">
+        <!--<form action="/Feedback/Create" class="contactForm" data-ajax="true" data-ajax-failure="onFailureFeedback"
+              data-ajax-loading="#loading" data-ajax-loading-duration="800" data-ajax-mode="replace"
+              data-ajax-success="onSuccessFeedback" data-ajax-update="#results_feedback" id="feedback_form" method="post" role="form">-->
+        <form action="/Auth/LogIn" class="modal-content" id="login_form" method="post" role="form"
+              data-ajax="true"
+              data-ajax-mode="replace"
+              data-ajax-success="onSuccessLogIn"
+              data-ajax-update="#login_container"
+              data-ajax-loading="#loading" data-ajax-loading-duration="800">
             <div class="modal-header">
                 <h5 class="modal-title">фыва</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -13,14 +20,18 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Логин</label>
-                    <input class="form-control" type="text" id="login" name="login">
-                    <p class="help-block">Example block-level help text here.</p>
+                    <input class="form-control" type="text" id="login" name="login" required>
+                    <!--<p class="help-block">Example block-level help text here.</p>-->
                 </div>
                 <div class="form-group">
                     <label>Пароль</label>
-                    <input class="form-control" type="password" id="pwd" name="pwd">
-                    <p class="help-block">Example block-level help text here.</p>
+                    <input class="form-control" type="password" id="pwd" name="pwd" required>
                 </div>
+                <div class="form-group">
+                    <label>Запомнить ?</label>
+                    <input class="form-control" type="checkbox" id="remember_me" name="remember_me">
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-success">Войти</button>
@@ -32,12 +43,6 @@
 <script>
     $("#auth_modal").modal("show");
     function onSuccessLogIn(result) {
-        console.log(result);
-        if (result == true) {
-            $("#auth_modal").modal("hide");
-        } else {
-
-        }
-
+        $("#auth_modal").modal("hide");
     }
 </script>

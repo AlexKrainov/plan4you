@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using plan2plan.Infrastructure.Business.Extentions;
 using plan2plan.Domain.Core;
 using System.Threading.Tasks;
+using plan2plan.Common.Image;
 
 namespace plan2plan.Controllers
 {
@@ -20,6 +21,14 @@ namespace plan2plan.Controllers
         {
             this.fileRepository = fileRepository;
             this.actionRepository = actionRepository;
+        }
+
+        [HttpGet]
+        public ActionResult PreviewPdfGenerator()
+        {
+            new ImageGenerator(fileRepository, Server).UpdateFiles();
+
+            return RedirectToAction("Index", "Home");
         }
         [HttpGet]
         public async Task<ActionResult> DownloadFile(string id, bool isLoad, string mail)

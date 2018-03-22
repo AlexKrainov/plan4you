@@ -71,6 +71,18 @@
     <Reference Include="Ninject.Web.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.MVC5.3.3.0\lib\net45\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Patagames.Pdf, Version=3.21.5.45, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pdfium.Net.SDK.3.21.2704\lib\net45\Patagames.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf.WinForms, Version=3.14.5.45, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pdfium.Net.SDK.3.21.2704\lib\net45\Patagames.Pdf.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf.Wpf, Version=3.14.5.45, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pdfium.Net.SDK.3.21.2704\lib\net45\Patagames.Pdf.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfiumViewer.2.13.0.0\lib\net20\PdfiumViewer.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -131,6 +143,9 @@
     <Content Include="Dialogs\Auth.html" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="icudt.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\bootstrap\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
@@ -153,6 +168,12 @@
     <Content Include="Scripts\bootstrap\esm\popper.js.map" />
     <Content Include="Scripts\bootstrap\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\bootstrap\esm\popper-utils.js.map" />
+    <Content Include="x64\pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Scripts\jquery\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\file_worker.js" />
     <Content Include="Scripts\jquery\jquery.unobtrusive-ajax.js" />
@@ -306,6 +327,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\Image\ImageGenerator.cs" />
+    <Compile Include="Common\Image\PreviewSizeType.cs" />
     <Compile Include="Controllers\Components\ActionController.cs" />
     <Compile Include="Controllers\Components\FileController.cs" />
     <Compile Include="Controllers\Components\PersonController.cs" />
@@ -339,7 +362,9 @@
     <Content Include="Views\Home\PreviewBox.cshtml" />
     <Content Include="Views\Home\PreviewFeedback.cshtml" />
     <Content Include="Views\Feedback\Create.cshtml" />
-    <Content Include="Views\_Partial\_Login.cshtml" />
+    <Content Include="Views\Auth\_LoginPartial.cshtml" />
+    <Content Include="Views\_Partial\_Header.cshtml" />
+    <Content Include="Source\book2.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -351,7 +376,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Auth\" />
     <Folder Include="Views\Statistics\" />
   </ItemGroup>
   <ItemGroup>

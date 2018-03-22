@@ -18,12 +18,19 @@ namespace plan2plan
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-           // GlobalConfiguration.Configure(WebApiConfig.Register);
+            // GlobalConfiguration.Configure(WebApiConfig.Register);
 
             // внедрение зависимостей
             NinjectModule registrations = new NinjectRegistrations();
             var kernel = new StandardKernel(registrations);
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+
+
+        }
+
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            HttpContext.Current.Session.Add("__MyAppSession", string.Empty);
         }
     }
 }

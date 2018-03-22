@@ -2,7 +2,7 @@
 using plan2plan.Infrastructure.Data;
 using plan2plan.Infrastructure.Data.Components;
 using System;
-using System.Collections.Generic;
+using plan2plan.Infrastructure.Business.Extentions;
 using System.Linq;
 using System.Web;
 
@@ -82,10 +82,10 @@ namespace plan2plan.Filter.Auth
         /// <param name="nameCookie"> Название Cookie</param>
         /// <param name="value">Значение которое нужно сохранить</param>
         /// <param name="dateTime">На сколько нужно сохранить информацию</param>
-        internal static void SaveCookieID(string nameCookie, string value, DateTime dateTime)
+        internal static void SaveCookieID(string nameCookie, int id, DateTime dateTime)
         {
-            var cookie = new HttpCookie(nameCookie, value); //.Encrypt());
-            cookie.Expires = DateTime.Now.AddYears(1);
+            var cookie = new HttpCookie(nameCookie, id.EncryptionIDtoString()); 
+            cookie.Expires = dateTime;
             HttpContext.Current.Response.Cookies.Add(cookie);
         }
 
@@ -98,7 +98,7 @@ namespace plan2plan.Filter.Auth
         {
             var cookie = HttpContext.Current.Request.Cookies[nameCookie];
 
-            return cookie == null ? null : cookie.Value; //.Decrypt();
+            return cookie == null ? null : cookie.Value.DecryptionID().ToString();
         }
 
         /// <summary>

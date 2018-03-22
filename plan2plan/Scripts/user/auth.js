@@ -1,8 +1,7 @@
 ﻿var auth = {
     showLoginDialog: function () {
-        $("#login_container").load("../Dialogs/Auth.html")
+        $("#auth_dialog_container").load("../Dialogs/Auth.html")
         
-
     }
 
 }

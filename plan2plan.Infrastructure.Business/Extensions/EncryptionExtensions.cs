@@ -8,17 +8,18 @@ namespace plan2plan.Infrastructure.Business.Extentions
 {
     public static class EncryptionExtensions
     {
+        const int encryptionKey = 629;
+
         public static string EncryptionIDtoString(this int id)
         {
-            id = id * 629;
+            id = id * encryptionKey;
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(id.ToString());
             return Convert.ToBase64String(plainTextBytes);
         }
         public static string EncryptionID(int id)
         {
-            id = id * 629;
-            //byte[] plainTextBytes = Encoding.UTF8.GetBytes(id.ToString());
-            return id.ToString();// Convert.ToBase64String(plainTextBytes);
+            id = id * encryptionKey;
+            return id.ToString();
         }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace plan2plan.Infrastructure.Business.Extentions
                 int result = -1;
                 if (int.TryParse(id, out result))
                 {
-                    result = result / 629;
+                    result = result / encryptionKey;
                 }
                 return result;
             }
@@ -49,7 +50,7 @@ namespace plan2plan.Infrastructure.Business.Extentions
 
         public static int DecryptionID(int id)
         {
-            return id / 629;
+            return id / encryptionKey;
         }
 
     }

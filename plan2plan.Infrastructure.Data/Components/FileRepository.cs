@@ -88,5 +88,30 @@ namespace plan2plan.Infrastructure.Data.Components
             throw new NotImplementedException();
         }
 
+        public void CreateFilePreview(File file, string pathToFile, string previewType)
+        {
+            var fileFromDB = context.Files.FirstOrDefault(x => x.ID == file.ID);
+
+            if (fileFromDB != null)
+            {
+                if (previewType.ToLower() == "min")
+                {
+                    fileFromDB.PreviewPath_min = pathToFile;
+                    file.PreviewPath_min = pathToFile;
+                }
+                else if (previewType.ToLower() == "avg")
+                {
+                    fileFromDB.PreviewPath_avg = pathToFile;
+                    file.PreviewPath_avg = pathToFile;
+                }
+                else if (previewType.ToLower() == "max")
+                {
+                    fileFromDB.PreviewPath_max = pathToFile;
+                    file.PreviewPath_max = pathToFile;
+                }
+
+                this.Save();
+            }
+        }
     }
 }

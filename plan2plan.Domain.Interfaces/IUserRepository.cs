@@ -10,6 +10,7 @@ namespace plan2plan.Domain.Interfaces
     public interface IUserRepository
     {
         User GetUser(int userID, string login);
-
+        int GetUserID(string login, string password);
+        bool isUserExist(string login, string password);
     }
 }
