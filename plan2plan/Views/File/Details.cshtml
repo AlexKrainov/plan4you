@@ -1,0 +1,103 @@
+﻿@model plan2plan.Domain.Core.File
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="team" class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+    <div class="container">
+        @*style="max-width: 100%;"*@
+        <div class="section-header">
+            <div>
+                <p>
+                    @Html.ActionLink("Назад к таблице", "Index") |
+                    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID })
+                </p>
+            </div>
+            <h2 class="text-right">Просмотр документа</h2>
+        </div>
+        <dl class="box-border">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FileName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FileName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Path)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Path)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PreviewPath_min)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PreviewPath_min)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PreviewPath_avg)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PreviewPath_avg)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PreviewPath_max)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PreviewPath_max)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.isDelete)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.isDelete)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.isShow)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.isShow)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.isExist)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.isExist)
+            </dd>
+
+        </dl>
+    </div>
+</section>

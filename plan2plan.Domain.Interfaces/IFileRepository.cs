@@ -11,10 +11,16 @@ namespace plan2plan.Domain.Interfaces
     {
         void Create(File file);
         void Update(File file);
-        void Delete(File file);
-        Task<File> GetFileByID(Guid id);
+        void Delete(Guid id);
+        Task<File> GetFileByIDTask(Guid id);
+        File GetFileByID(Guid id);
         void Save();
+        /// <summary>
+        /// Получение файлов, где isDelete == false && isShow == true && isExist == true
+        /// </summary>
+        /// <returns></returns>
         IEnumerable<File> GetFiles();
+        IEnumerable<File> GetAllFiles();
         IEnumerable<File> GetFilesByRange(int start, int count);
         void SetExistFile(File file, bool isExist);
         void CreateFilePreview(File file, string pathToFile, string previewType);

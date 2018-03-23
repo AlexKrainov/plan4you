@@ -42,60 +42,10 @@
         <script src="~/Scripts/vue_components/like_component.js"></script>*@
 </head>
 <body>
-    <div id="preloader"></div>
-    <!--==========================
-      Top Bar
-    ============================-->
-    <section id="topbar" class="d-none d-lg-block">
-        <div class="container clearfix">
-            <div class="contact-info float-left">
-                <i class="fa fa-envelope-o"></i> <a href="mailto:contact@example.com">contact@example.com</a>
-                <i class="fa fa-phone"></i> +1 5589 55488 55
-            </div>
-            <div class="social-links float-right">
-                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-            </div>
-        </div>
-    </section>
-    <!--==========================
-      Header
-    ============================-->
     @{ Html.RenderPartial("~/Views/_Partial/_Header.cshtml"); }
-    <!-- #header -->
-    <!--==========================
-      Intro Section
-    ============================-->
-    @*<script async defer src="//www.instagram.com/embed.js"></script>
 
-           <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/BgjNHq_BfqN/"
-                       data-instgrm-version="8" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
-        margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-               <div style="padding:8px;">
-                   <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;">
-                       <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div>
-                   </div><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/BgjNHq_BfqN/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Публикация от _plan2plan</a> <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-03-20T15:28:55+00:00">20 Мар 2018 в 8:28 PDT</time></p>
-               </div>
-           </blockquote>*@
+    @RenderBody()
 
-    <section id="intro" class="wow fadeIn">
-        <div class="intro-content">
-            <h2>Создаем и сохраняем <span>ваши</span><br>впечатления</h2>
-            <div>
-                <a href="#about" class="btn-get-started scrollto">Сохранить</a>
-                <a href="#portfolio" class="btn-projects scrollto">Создать</a>
-            </div>
-        </div>
-        <div id="intro-carousel" class="owl-carousel">
-            <div class="item" style="background-image: url('../../Source/Images/laptop-3190199_1920.jpg');"></div>
-        </div>
-    </section><!-- #intro -->
-    <main id="main">
-        @RenderBody()
-    </main>
     <!--==========================
       Footer
     ============================-->
@@ -127,7 +77,7 @@
     <script src="~/TemplateSite/lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="~/TemplateSite/lib/magnific-popup/magnific-popup.min.js"></script>
     <script src="~/TemplateSite/lib/sticky/sticky.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+    @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>*@
     <!-- Template Main Javascript File -->
     <script src="~/TemplateSite/js/main.js"></script>
 

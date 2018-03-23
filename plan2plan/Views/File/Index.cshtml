@@ -1,0 +1,94 @@
+﻿@model IEnumerable<plan2plan.Domain.Core.File>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<main id="main">
+    <section id="team" class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+        <div class="container">
+            @*style="max-width: 100%;"*@
+            <div class="section-header">
+                <h2>Работа с файлами</h2>
+            </div>
+            <div id="toolbar" class="btn-group">
+                @*@Html.ActionLink("Добавить", "Create", null, new { @class = "btn btn-default" })*@
+                <a href="/File/Create" class="btn btn-default"> <i class="fa fa-plus"></i></a>
+                <a href="/File/PreviewPdfGenerator" title="Превью генератор"><i class="fa  fa-refresh"></i></a>
+            </div>
+            <table id="file_table">
+                <thead>
+                    <tr>
+                        <th data-sortable="true" data-halign="center" data-width="50px">
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th data-sortable="true" data-halign="center">
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th data-sortable="true" data-halign="center">
+                            @Html.DisplayNameFor(model => model.FileName)
+                        </th>
+                        <th data-sortable="true" data-halign="center">
+                            @Html.DisplayNameFor(model => model.Path)
+                        </th>
+                        @*<th data-sortable="true" data-halign="center">
+                                @Html.DisplayNameFor(model => model.PreviewPath_min)
+                            </th>*@
+                        <th data-sortable="true" data-halign="center" data-width="50px">
+                            @Html.DisplayNameFor(model => model.PreviewPath_avg)
+                        </th>
+                        @*<th data-sortable="true" data-halign="center">
+                                @Html.DisplayNameFor(model => model.PreviewPath_max)
+                            </th>*@
+                        <th data-sortable="true" data-halign="center" data-width="50px">
+                            @Html.DisplayNameFor(model => model.isDelete)
+                        </th>
+                        <th data-sortable="true" data-halign="center">
+                            @Html.DisplayNameFor(model => model.isShow)
+                        </th>
+                        @*<th data-sortable="true" data-halign="center">
+                                @Html.DisplayNameFor(model => model.isExist)
+                            </th>*@
+                        <th data-sortable="true" data-halign="center">Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.Description</td>
+                            <td>@item.FileName</td>
+                            <td>@item.Path</td>
+                            <td>@item.PreviewPath_avg</td>
+                            <td>@item.isDelete</td>
+                            <td>@item.isShow</td>
+                            @*<td>@item.isExist</td>*@
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+<!-- #region Bootstrap-table (CSS)-->
+<link href="~/Scripts/bootstrap/bootstrap_table/bootstrap-table.min.css" rel="stylesheet" />
+<link href="~/Scripts/bootstrap/bootstrap_table/extensions/sticky-header/bootstrap-table-sticky-header.css" rel="stylesheet" />
+<!-- #endregion -->
+<!-- #region Bootstrap-table (JS)-->
+@*<script src="~/Scripts/bootstrap/bootstrap_table/bootstrap-table-locale-all.min.js"></script>*@
+<script src="~/Scripts/bootstrap/bootstrap_table/bootstrap-table.min.js"></script>
+@*<script src="~/Scripts/bootstrap/bootstrap_table/extensions/accent-neutralise/bootstrap-table-accent-neutralise.js"></script>*@
+<script src="~/Scripts/bootstrap/bootstrap_table/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
+<script src="~/Scripts/bootstrap/bootstrap_table/locale/bootstrap-table-ru-RU.js"></script>
+@*<script src="~/Scripts/bootstrap/bootstrap_table/locale/bootstrap-table-eu-EU.js"></script>*@
+<script src="~/Scripts/bootstrap/bootstrap_table/MyScript/site_table_bootstrapjs.js"></script>
+<!-- #endregion -->

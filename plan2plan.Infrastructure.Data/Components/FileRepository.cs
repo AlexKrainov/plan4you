@@ -3,6 +3,7 @@ using plan2plan.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,17 +20,27 @@ namespace plan2plan.Infrastructure.Data.Components
         }
         public void Create(Domain.Core.File file)
         {
-            throw new NotImplementedException();
+            context.Files.Add(file);
         }
 
-        public void Delete(Domain.Core.File file)
+        public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            File file = context.Files.Find(id);
+
+            if (file != null)
+            {
+                file.isDelete = true;
+            }
         }
 
-        public async Task<Domain.Core.File> GetFileByID(Guid id)
+        public async Task<Domain.Core.File> GetFileByIDTask(Guid id)
         {
             return await context.Files.FindAsync(id);
+        }
+
+        public File GetFileByID(Guid id)
+        {
+            return context.Files.Find(id);
         }
 
         /// <summary>
@@ -43,7 +54,7 @@ namespace plan2plan.Infrastructure.Data.Components
             //{
             //    files[i].ID = files[i].ID;
             //}
-            return context.Files.Where(x => x.isDelete == false && x.isShow == true);
+            return context.Files.Where(x => x.isDelete == false && x.isShow == true && x.isExist == true);
         }
 
         /// <summary>
@@ -85,7 +96,7 @@ namespace plan2plan.Infrastructure.Data.Components
 
         public void Update(Domain.Core.File file)
         {
-            throw new NotImplementedException();
+            context.Entry(file).State = EntityState.Modified;
         }
 
         public void CreateFilePreview(File file, string pathToFile, string previewType)
@@ -112,6 +123,11 @@ namespace plan2plan.Infrastructure.Data.Components
 
                 this.Save();
             }
+        }
+
+        public IEnumerable<File> GetAllFiles()
+        {
+            return context.Files;
         }
     }
 }

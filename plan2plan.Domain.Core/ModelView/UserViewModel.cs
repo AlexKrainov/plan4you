@@ -10,6 +10,6 @@ namespace plan2plan.Domain.Core.ModelView
     {
         public string login { get; set; }
         public string pwd { get; set; }
-        public bool remember_me { get; set; }
+        public bool remember { get; set; }
     }
 }

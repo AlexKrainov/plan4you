@@ -25,6 +25,8 @@ namespace plan2plan
             var kernel = new StandardKernel(registrations);
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
 
+            kernel.Unbind<ModelValidatorProvider>();
+            //AddBindings();
 
         }
 

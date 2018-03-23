@@ -26,7 +26,7 @@ namespace plan2plan.Common.Image
         #region Создание если нет превью и проверка существование файла 
         public void UpdateFiles()
         {
-            RefreshFiles(fileRepository.GetFiles().ToList());
+            RefreshFiles(fileRepository.GetAllFiles().ToList());
         }
 
         /// <summary>

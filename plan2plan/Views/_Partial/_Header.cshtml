@@ -1,22 +1,45 @@
-﻿<header id="header">
+﻿<div id="preloader"></div>
+<!--==========================
+  Top Bar
+============================-->
+<section id="topbar" class="d-none d-lg-block">
+    <div class="container clearfix">
+        <div class="contact-info float-left">
+            <i class="fa fa-envelope-o"></i> <a href="mailto:client@plan2plan.ru">client@plan2plan.ru</a>
+            <i class="fa fa-phone"></i> +7 (966) 085-79-70
+        </div>
+        <div class="social-links float-right">
+            <a href="https://www.instagram.com/_plan2plan/" class="instagram"><i class="fa fa-instagram"></i></a>
+            @*<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>*@
+        </div>
+    </div>
+</section>
+<!--==========================
+  Header
+============================-->
+<header id="header">
     <div class="container">
         <div id="logo" class="pull-left">
-            <h1><a href="#body" class="scrollto">plan<span>2plan</span></a></h1>
+            <h1><a href="/Home/Index" class="scrollto">plan<span>2plan</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
         </div>
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#body">Главная</a></li>
+                <li class="menu-active">@Html.ActionLink("Главная", "Index", "Home")</li>
                 @*<li><a href="#about">О проекте</a></li>
                     <li><a href="#services">Чек-листы</a></li>
                     <li><a href="#portfolio">Бук-сеты</a></li>
                     <li><a href="#contact">Напишите нам</a></li>*@
                 <li id="login_container" class="menu-has-children">
-                    @Html.Partial("~/Views/Auth/_LoginPartial.cshtml")
+                    @Html.Partial("~/Views/Auth/_LoginPartial.cshtml", null)
                 </li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
 </header>
 <div id="auth_dialog_container"></div>
+<!-- #header -->

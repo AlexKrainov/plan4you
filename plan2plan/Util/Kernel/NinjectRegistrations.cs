@@ -6,6 +6,7 @@ using System.Web;
 using plan2plan.Domain.Interfaces;
 using plan2plan.Domain.Core;
 using plan2plan.Infrastructure.Data.Components;
+using System.Web.Http.Validation;
 
 namespace plan2plan.Util.Kernel
 {
@@ -13,6 +14,7 @@ namespace plan2plan.Util.Kernel
     {
         public override void Load()
         {
+
             Bind<IFileRepository>().To<FileRepository>();
             Bind<IStatisticsRepository>().To<StatisticsRepository>();
             Bind<IFeedbackRepository>().To<FeedbackRepository>();

@@ -3,9 +3,31 @@
     ViewBag.Title = "Index";
 }
 
+<!--==========================
+     Intro Section
+   ============================-->
+<section id="intro" class="wow fadeIn">
+    <div class="intro-content">
+        <h2>
+            Читательский дневник, <span>чек-листы</span>
+            <br />
+            и всё, что мотивирует
+        </h2>
+        @*<div>
+                <a href="#about" class="btn-get-started scrollto">Сохранить</a>
+                <a href="#portfolio" class="btn-projects scrollto">Создать</a>
+            </div>*@
+    </div>
+    <div id="intro-carousel" class="owl-carousel">
+        <div class="item" style="background-image: url('../../Source/Images/laptop-3190199_1920.jpg');"></div>
+    </div>
+</section><!-- #intro -->
+<main id="main">
 
-@{ Html.RenderPartial("PreviewDocs", (List<plan2plan.Domain.Core.File>)ViewBag.PreviewFiles); }
+    @{ Html.RenderPartial("PreviewDocs", (List<plan2plan.Domain.Core.File>)ViewBag.PreviewFiles); }
 
-@{ Html.RenderPartial("PreviewBox"); }
+    @*@{ Html.RenderPartial("PreviewBox"); }*@
 
-@{ Html.RenderPartial("PreviewFeedback"); }
+    @{ Html.RenderPartial("PreviewFeedback"); }
+
+</main>

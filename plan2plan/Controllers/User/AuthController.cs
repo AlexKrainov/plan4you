@@ -26,39 +26,70 @@ namespace plan2plan.Controllers.User
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult LogIn(UserViewModel user)
+
+        [HttpGet]
+        public ActionResult Enter(UserViewModel user, string ReturnUrl)
         {
-            bool IsAuthenticated = false;
+            string message = "Логин и пароль обязателен для заполнения";
+            if (string.IsNullOrEmpty(user.login) == false
+               && string.IsNullOrEmpty(user.pwd) == false)
+            {
+                if (userRepository.isUserExist(user.login, user.pwd) == true)
+                {
+                    ViewBag.Authenticate = authenticate(user);
+
+                    return Redirect(ReturnUrl ?? Url.Action("Index", "Home"));
+                }
+                else
+                {
+                    message = "Вы ввели неверную пару логин и пароль.";
+                }
+            }
+            ViewBag.ErrorMessage = message;
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult LogIn([Bind(Include = "login,pwd,remember")]UserViewModel user)
+        {
             if (string.IsNullOrEmpty(user.login) == false
                 && string.IsNullOrEmpty(user.pwd) == false)
             {
                 if (userRepository.isUserExist(user.login, user.pwd) == true)
                 {
-                    int userID = userRepository.GetUserID(user.login, user.pwd);
-                    //Авторизация пользователя через куки
-                    FormsAuthentication.SetAuthCookie(user.login, user.remember_me); 
-                    UserStorage.SaveCookieID(UserStorage.aliasUserID, userID, DateTime.Now.AddMonths(1));
-
-                    userSessionRepository.CreateUserSession(new Domain.Core.UserSession
-                    {
-                        SessionID = Session.SessionID,
-                        UserID = userID,
-                        Start = DateTime.Now
-                    });
-                    userSessionRepository.Save();
-
-                    IsAuthenticated = true;
-                    return PartialView("_LoginPartial", new Authenticate { IsAuthenticated = IsAuthenticated, UserName = user.login });// son(true, JsonRequestBehavior.AllowGet);
+                    ViewBag.Authenticate = authenticate(user);
+                    return PartialView("_LoginPartial");
                 }
             }
             return PartialView("_LoginPartial");
         }
+            
+        /// <summary>
+        /// Авторизация пользователя, и сохранение данных о нем в куки
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        private Authenticate authenticate(UserViewModel user)
+        {
+            int userID = userRepository.GetUserID(user.login, user.pwd);
+            //Авторизация пользователя через куки
+            FormsAuthentication.SetAuthCookie(user.login, user.remember);
+            UserStorage.SaveCookieID(UserStorage.aliasUserID, userID, DateTime.Now.AddMonths(1));
+
+            userSessionRepository.CreateUserSession(new Domain.Core.UserSession
+            {
+                SessionID = Session.SessionID,
+                UserID = userID,
+                Start = DateTime.Now
+            });
+            userSessionRepository.Save();
+
+            return new Authenticate { IsAuthenticated = true, UserName = user.login };
+        }
 
         [HttpGet]
-        public ActionResult LogOut(string returnUrl)
+        public ActionResult LogOut(string ReturnUrl)
         {
-            //qgoaat1a5tnvipwlxljambvs
             var z = HttpContext.Session.SessionID;
             userSessionRepository.Update(Session.SessionID, UserStorage.currentUser.ID);
             userSessionRepository.Save();
@@ -67,7 +98,7 @@ namespace plan2plan.Controllers.User
             UserStorage.RemoveCookie(UserStorage.aliasUserID);
             UserStorage.currentUser = null;
 
-            return Redirect(returnUrl ?? Url.Action("Index", "Home"));
+            return Redirect(ReturnUrl ?? Url.Action("Index", "Home"));
             // return PartialView("_LoginPartial", new Authenticate { IsAuthenticated = false });
         }
     }

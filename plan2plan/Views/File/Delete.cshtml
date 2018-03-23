@@ -1,0 +1,108 @@
+﻿@model plan2plan.Domain.Core.File
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="team" class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+    <div class="container">
+        <div class="section-header">
+            <div>
+                @Html.ActionLink("Назад к таблице", "Index")
+            </div>
+            <h3>Are you sure you want to delete this?</h3>
+        </div>
+        <dl class="dl-horizontal box-border">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FileName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FileName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Path)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Path)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PreviewPath_min)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PreviewPath_min)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PreviewPath_avg)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PreviewPath_avg)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PreviewPath_max)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PreviewPath_max)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.isDelete)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.isDelete)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.isShow)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.isShow)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.isExist)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.isExist)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions no-color">
+                <input type="submit" value="Удалить" class="btn btn-default" />
+            </div>
+        }
+    </div>
+
+</section>
