@@ -112,33 +112,33 @@ jQuery(document).ready(function ($) {
     });
 
 
-    // Porfolio - uses the magnific popup jQuery plugin
-    $('.portfolio-popup').magnificPopup({
-        type: 'image',
-        removalDelay: 300,
-        mainClass: 'mfp-fade',
-        gallery: {
-            enabled: true
-        },
-        zoom: {
-            enabled: true,
-            duration: 300,
-            easing: 'ease-in-out',
-            opener: function (openerElement) {
-                return openerElement.is('img') ? openerElement : openerElement.find('img');
-            }
-        }
-    });
+    //// Porfolio - uses the magnific popup jQuery plugin
+    //$('.portfolio-popup').magnificPopup({
+    //    type: 'image',
+    //    removalDelay: 300,
+    //    mainClass: 'mfp-fade',
+    //    gallery: {
+    //        enabled: true
+    //    },
+    //    zoom: {
+    //        enabled: true,
+    //        duration: 300,
+    //        easing: 'ease-in-out',
+    //        opener: function (openerElement) {
+    //            return openerElement.is('img') ? openerElement : openerElement.find('img');
+    //        }
+    //    }
+    //});
 
     // Testimonials carousel (uses the Owl Carousel library)
-    testimonials_carousel = $(".testimonials-carousel").owlCarousel({
-        //autoplay: true,
-        dots: true,
-        loop: true,
-        //nav: true,
-        autoplayHoverPause: true,
-        responsive: { 0: { items: 1 }, 768: { items: 2 }, 900: { items: 3 } }
-    });
+    //testimonials_carousel = $(".testimonials-carousel").owlCarousel({
+    //    //autoplay: true,
+    //    dots: true,
+    //    loop: true,
+    //    //nav: true,
+    //    autoplayHoverPause: true,
+    //    responsive: { 0: { items: 1 }, 768: { items: 2 }, 900: { items: 3 } }
+    //});
 
     // Clients carousel (uses the Owl Carousel library)
     $(".clients-carousel").owlCarousel({

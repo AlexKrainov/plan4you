@@ -1,37 +1,35 @@
 ﻿Vue.component("vue-like", {
-    template: ' <span><span>{{ count_like }}</span><a href="" onclick="return false;" v-on:click="click_vue()"><i class="fa fa-heart"></i></a></span>',
-    props: ["data_action", "data_type", "data_id", "count_like"],
+    template: ' <span><span>{{ count_like }}</span><a href="" onclick="return false;" v-on:click="onLike()" v-bind:class="{ not_selected: not_selected }"><i class="fa fa-heart"></i></a></span>',
+    props: ["doctype", "id", "count_like", "not_selected"],
     data: function () {
-        //var file = action.action_obj.find(x => x.id == data - id);
-        //console.log(file);
-        //this.count_like = file.likes
+        if (this.doctype == "check_sheets") {
+            this.draw_likes();
+        }
         return {};
     },
     methods: {
-        click_vue: function () {
-            var draw_likes_bind = this.draw_likes.bind(this);
-
-            console.log(this.data_type);
-            console.log(this.data_id);
-
-            this.update_like(this.data_type, this.data_id).then(
-                function (result) {
-                    draw_likes_bind(result);
-                });
+        onLike: function () {
+            this.onLikeBind(this);
         },
-        update_like: function (data_type, fileID) {
-            return $.ajax({
+        onLikeBind: function (_this) {
+            $.ajax({
                 url: '/Action/UpdateLike',
                 type: "POST",
-                data: { datatype: data_type, id: fileID },
+                data: { datatype: _this.doctype, id: _this.id },
                 success: function (result) {
-                    return result;
+                    if (result.is_ok == true) {
+                        let file = action.action_obj.check_sheets.find(x => x.id == _this.id);
+                        file.is_like = result.is_like;
+                        file.likes = result.likes;
+                        _this.draw_likes();
+                    }
                 }
             });
         },
-        draw_likes: function (obj) {
-            //this.count_like = count;
-            console.log(obj);
+        draw_likes: function () {
+            var file = action.action_obj.check_sheets.find(x => x.id == this.id);
+            this.count_like = file.likes
+            this.not_selected = !file.is_like;
         }
     }
 });

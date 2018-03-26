@@ -20,7 +20,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Логин</label>
-                    <input class="form-control" type="text" id="login" name="login" required>
+                    <input class="form-control" type="text" id="login" name="login" required autofocus>
                     <!--<p class="help-block">Example block-level help text here.</p>-->
                 </div>
                 <div class="form-group">
@@ -35,14 +35,20 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-outline-primary">Войти</button>
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                <!--<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>-->
+                <button type="submit" class="btn btn-outline-primary" id="enter">Войти</button>
             </div>
         </form>
     </div>
 </div>
 <script>
+    //$('#login, #pwd').keypress(function (e) {
+    //    if (e.keyCode == 13)
+    //        $('#enter').click();
+    //});
+
     $("#auth_modal").modal("show");
+    
     function onSuccessLogIn(result) {
         $("#auth_modal").modal("hide");
     }

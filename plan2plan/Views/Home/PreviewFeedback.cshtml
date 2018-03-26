@@ -3,23 +3,27 @@
 ============================-->
 <section id="contact" class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
     <div class="container">
+        <div class="section-header">
+            <h2>Напишите нам</h2>
+            <p>Есть идеи для новых чек-листов или предложения по улучшению уже сушеществующих? Хотите  просто с нами пообщаться или задать вопрос? Напишите нам - мы на связи!</p>
+        </div>
         <div class="form">
             <div id="sendmessage">Your message has been sent. Thank you!</div>
             <div id="errormessage"></div>
             @using (Ajax.BeginForm(
-            actionName: "Create",
-            controllerName: "Feedback",
-            routeValues: null,
-            ajaxOptions: new AjaxOptions
-            {
-                UpdateTargetId = "results_feedback",
-                LoadingElementId = "loading",
-                LoadingElementDuration = 800,
-                InsertionMode = InsertionMode.Replace,
-                OnSuccess = "onSuccessFeedback",
-                OnFailure = "onFailureFeedback"
-            },
-            htmlAttributes: new { @class = "contactForm", role = "form", id = "feedback_form" }))
+        actionName: "Create",
+        controllerName: "Feedback",
+        routeValues: null,
+        ajaxOptions: new AjaxOptions
+        {
+            UpdateTargetId = "results_feedback",
+            LoadingElementId = "loading",
+            LoadingElementDuration = 800,
+            InsertionMode = InsertionMode.Replace,
+            OnSuccess = "onSuccessFeedback",
+            OnFailure = "onFailureFeedback"
+        },
+        htmlAttributes: new { @class = "contactForm", role = "form", id = "feedback_form" }))
             {
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -35,10 +39,10 @@
                 </div>
                 <div class="form-group">
                     <textarea class="form-control" name="message" rows="5" data-rule="required"
-                              data-msg="Пожалуйста напишите,что-нибудь для нас" placeholder="Текст обращения"></textarea>
+                              data-msg="Пожалуйста напишите,что-нибудь для нас" placeholder="Ваше письмо"></textarea>
                     <div class="validation"></div>
                 </div>
-                <div class="text-center"><button type="submit"> Send Message</button></div>
+                <div class="text-center"><button type="submit">Отправить обращение</button></div>
             }
             <div id="loading" style="display: none; color: red;">
                 <div id="preloader"></div>

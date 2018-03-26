@@ -26,9 +26,9 @@ namespace plan2plan.Infrastructure.Data.Components
             return context.SaveChanges();
         }
 
-        public void Update(string sessionID, int userID)
+        public void Update(string ip, int userID)
         {
-            UserSession userSession = context.UserSessions.FirstOrDefault(x => x.SessionID == sessionID && x.UserID == userID);
+            UserSession userSession = context.UserSessions.OrderByDescending( x=> x.ID).FirstOrDefault(x => x.IP == ip && x.UserID == userID);
 
             if (userSession != null)
             {

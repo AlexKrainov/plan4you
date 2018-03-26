@@ -38,7 +38,6 @@ namespace plan2plan.Controllers
                 }
                 catch (Exception ex)
                 {
-
                     ViewBag.Message = "Извините, не удалось отправить сообщение. Ошибка при сохранении.";
                     return PartialView();
                 }

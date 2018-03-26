@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201803221554179_plan2plan_4.Designer.cs">
       <DependentUpon>201803221554179_plan2plan_4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803240807064_plan2plan_5.cs" />
+    <Compile Include="Migrations\201803240807064_plan2plan_5.Designer.cs">
+      <DependentUpon>201803240807064_plan2plan_5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="plat2platContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803221554179_plan2plan_4.resx">
       <DependentUpon>201803221554179_plan2plan_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803240807064_plan2plan_5.resx">
+      <DependentUpon>201803240807064_plan2plan_5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,55 @@
+﻿<!--==========================
+   Our Portfolio Section
+ ============================-->
+<section id="portfolio" class="wow fadeInUp">
+    <div class="container">
+        <div class="section-header">
+            <h2>Мы в Instagram</h2>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row no-gutters" id="instagram">
+            <div class="col-lg-3 col-md-4" v-for="img in insta_images">
+                <div class="portfolio-item wow fadeInUp">
+                    <a v-bind:href="img.src" class="portfolio-popup">
+                        <img v-bind:src="img.src" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- #portfolio -->
+
+
+<script>
+    //var src = []; $("._4rbun img").each(function(el) { src.push({ src: $(this).attr("src"), message: $(this).attr("alt")}); }); JSON.stringify(src);
+    var insta_images = [];
+    $(function () {
+        $.getJSON("/Source/Instagram/InstagramSource.json", (result) => {
+            insta_images = result.splice(0, 8);// берем только последние 8 элементов
+
+            var insta_images_vue = new Vue({
+                el: '#instagram',
+                data: insta_images
+            });
+
+            // Porfolio - uses the magnific popup jQuery plugin
+            $('.portfolio-popup').magnificPopup({
+                type: 'image',
+                removalDelay: 300,
+                mainClass: 'mfp-fade',
+                gallery: {
+                    enabled: true
+                },
+                zoom: {
+                    enabled: true,
+                    duration: 300,
+                    easing: 'ease-in-out',
+                    opener: function (openerElement) {
+                        return openerElement.is('img') ? openerElement : openerElement.find('img');
+                    }
+                }
+            });
+        });
+    });
+</script>

@@ -27,6 +27,12 @@ namespace plan2plan.Controllers.User
             return View();
         }
 
+        /// <summary>
+        /// Авторизация через отдельную страницу
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="ReturnUrl"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult Enter(UserViewModel user, string ReturnUrl)
         {
@@ -49,6 +55,11 @@ namespace plan2plan.Controllers.User
             return View("Index");
         }
 
+        /// <summary>
+        /// Авторизация через диалоговое окно
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult LogIn([Bind(Include = "login,pwd,remember")]UserViewModel user)
         {
@@ -63,7 +74,7 @@ namespace plan2plan.Controllers.User
             }
             return PartialView("_LoginPartial");
         }
-            
+
         /// <summary>
         /// Авторизация пользователя, и сохранение данных о нем в куки
         /// </summary>
@@ -80,7 +91,8 @@ namespace plan2plan.Controllers.User
             {
                 SessionID = Session.SessionID,
                 UserID = userID,
-                Start = DateTime.Now
+                Start = DateTime.Now,
+                IP = Request.UserHostAddress
             });
             userSessionRepository.Save();
 
@@ -90,8 +102,7 @@ namespace plan2plan.Controllers.User
         [HttpGet]
         public ActionResult LogOut(string ReturnUrl)
         {
-            var z = HttpContext.Session.SessionID;
-            userSessionRepository.Update(Session.SessionID, UserStorage.currentUser.ID);
+            userSessionRepository.Update(Request.UserHostAddress, UserStorage.CurrentUserID);
             userSessionRepository.Save();
 
             FormsAuthentication.SignOut();

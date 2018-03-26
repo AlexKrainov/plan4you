@@ -11,9 +11,10 @@ namespace plan2plan.Domain.Interfaces
     {
         void Create(Statistics statistics);
         void Update(Statistics statistics);
-        void Delete(Statistics statistics);
+        void Delete(int id);
         Task<int> Save();
         Statistics GetStatisticsByID(int id);
         Statistics GetStatisticsByIP(string ip);
+        IEnumerable<Statistics> GetAllStatistics();
     }
 }

@@ -341,12 +341,14 @@
     <Content Include="Scripts\bootstrap\esm\popper.js.map" />
     <Content Include="Scripts\bootstrap\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\bootstrap\esm\popper-utils.js.map" />
+    <Content Include="Scripts\vue_components\download_componentjs.js" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="x86\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\file_worker.js" />
     <Content Include="Scripts\jquery\jquery.unobtrusive-ajax.js" />
@@ -371,7 +373,6 @@
     <Content Include="Scripts\vue.js" />
     <Content Include="Scripts\vue.min.js" />
     <Content Include="Scripts\vue_components\like_component.js" />
-    <Content Include="Source\example\Test.jpg" />
     <Content Include="Source\Images\business-3224648_1920.jpg" />
     <Content Include="Source\Images\laptop-2559707_1920.jpg" />
     <Content Include="Source\Images\laptop-3190199_1920.jpg" />
@@ -504,10 +505,8 @@
     <Compile Include="Common\Image\PreviewSizeType.cs" />
     <Compile Include="Controllers\Components\ActionController.cs" />
     <Compile Include="Controllers\Components\FileController.cs" />
-    <Compile Include="Controllers\Components\PersonController.cs" />
     <Compile Include="Controllers\Components\StatisticsController.cs" />
-    <Compile Include="Controllers\FeedbackController.cs" />
-    <Compile Include="Controllers\FilesController.cs" />
+    <Compile Include="Controllers\Components\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\User\AuthController.cs" />
     <Compile Include="Filter\Auth\MyAuthorizeAttribute.cs" />
@@ -545,6 +544,8 @@
     <Content Include="Views\File\Details.cshtml" />
     <Content Include="Views\File\Edit.cshtml" />
     <Content Include="Views\Auth\Index.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Home\PreviewInstagram.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -556,7 +557,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Statistics\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

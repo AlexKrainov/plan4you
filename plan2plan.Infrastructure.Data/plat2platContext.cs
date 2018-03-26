@@ -11,8 +11,8 @@ namespace plan2plan.Infrastructure.Data
     public partial class plat2platContext : DbContext
     {
         public plat2platContext()
-            //: base("Data Source=u479185.mssql.masterhost.ru;initial catalog=u479185_bujodb;user id=u479185;password=sagemicerea7;multipleactiveresultsets=True;application name=EntityFramework;")
-            : base("Server=DELL\\SQLEXPRESS;Database=BujoDB;Trusted_Connection=True;")
+            : base("Data Source=u479185.mssql.masterhost.ru;initial catalog=u479185_bujodb;user id=u479185;password=sagemicerea7;multipleactiveresultsets=True;application name=EntityFramework;")
+            //: base("Server=DELL\\SQLEXPRESS;Database=BujoDB;Trusted_Connection=True;")
         {
         }
 

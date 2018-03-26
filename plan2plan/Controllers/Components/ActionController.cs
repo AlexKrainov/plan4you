@@ -23,7 +23,7 @@ namespace plan2plan.Controllers.Components
             this.actionRepository = actionRepository;
         }
         /// <summary>
-        /// 
+        /// Возращает все данный поставленных лайках и о скаченных файлах, для отрисовки на клиенте
         /// </summary>
         /// <returns></returns>
         public async Task<ActionResult> Get()

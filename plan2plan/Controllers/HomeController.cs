@@ -37,5 +37,9 @@ namespace plan2plan.Controllers
         {
             return PartialView();
         }
+        public ActionResult PreviewInstagram()
+        { 
+            return View();
+        }
     }
 }

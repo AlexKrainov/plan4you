@@ -21,9 +21,18 @@ namespace plan2plan.Infrastructure.Data.Components
             context.Statistics.Add(statistics);
         }
 
-        public void Delete(Statistics statistics)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Statistics statistic = context.Statistics.Find(id);
+            if (statistic != null)
+            {
+                context.Statistics.Remove(statistic);
+            }
+        }
+
+        public IEnumerable<Statistics> GetAllStatistics()
+        {
+            return context.Statistics;
         }
 
         public Statistics GetStatisticsByID(int id)

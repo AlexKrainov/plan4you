@@ -1,10 +1,24 @@
-﻿$(function () {
+﻿var v = null;
+$(function () {
     action.init().then(function () {
         action.refresh();
         action.subscribe_to_event();
+       v = new Vue({
+            el: ".test"
+        });
+
+        //Добавляем карусель после вью
+        testimonials_carousel = $(".testimonials-carousel").owlCarousel({
+            //autoplay: true,
+            dots: true,
+            loop: true,
+            //nav: true,
+            autoplayHoverPause: true,
+            responsive: { 0: { items: 1 }, 768: { items: 2 }, 900: { items: 3 } }
+        });
     });
 
-
+    
 });
 
 var action = {
@@ -34,7 +48,7 @@ var action = {
             //});
         });
     },
-    //Example view likes/download
+    //Example view download
     //<span>
     //       <span data-type="check_sheets" data-action="likes" data-id="38b4c5ed-bd2a-e811-a3e8-18dbf2192184">0</span>
     //       <a href="" onclick="return false;" class="not_selected"><i class="fa fa-heart"></i></a>
@@ -47,18 +61,18 @@ var action = {
             let fileID = action.action_obj.check_sheets[i].id;
 
             $("span[data-type=check_sheets][data-id=" + fileID + "][data-action=downloads]").html(action.action_obj.check_sheets[i].downloads);
-            $("span[data-type=check_sheets][data-id=" + fileID + "][data-action=likes]").html(action.action_obj.check_sheets[i].likes);
+            //$("span[data-type=check_sheets][data-id=" + fileID + "][data-action=likes]").html(action.action_obj.check_sheets[i].likes);
 
-            if (action.action_obj.check_sheets[i].is_like == true) {
-                $("span[data-type=check_sheets][data-id=" + fileID + "][data-action=likes]").parent().find("a").removeClass("not_selected");
-            } else {
-                $("span[data-type=check_sheets][data-id=" + fileID + "][data-action=likes]").parent().find("a").addClass("not_selected");
-            }
+            //if (action.action_obj.check_sheets[i].is_like == true) {
+            //    $("span[data-type=check_sheets][data-id=" + fileID + "][data-action=likes]").parent().find("a").removeClass("not_selected");
+            //} else {
+            //    $("span[data-type=check_sheets][data-id=" + fileID + "][data-action=likes]").parent().find("a").addClass("not_selected");
+            //}
         }
     },
     subscribe_to_event: function () {
-        $("span[data-type=check_sheets][data-action=likes]").parent().find("a").on("click", action.onLike);
-        $(".like_img").on("dblclick", action.onLike);
+        //$("span[data-type=check_sheets][data-action=likes]").parent().find("a").on("click", action.onLike);
+        //$(".like_img").on("dblclick", action.onLike);
     },
 
     onLike: function (event) {

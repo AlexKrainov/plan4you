@@ -11,7 +11,7 @@ namespace plan2plan.Domain.Interfaces
     {
         void CreateUserSession(UserSession userSession);
         int Save();
-        void Update(string sessionID, int userID);
+        void Update(string ip, int userID);
 
     }
 }

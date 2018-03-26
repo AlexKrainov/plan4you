@@ -27,7 +27,7 @@ namespace plan2plan.Controllers
             this.actionRepository = actionRepository;
         }
 
-        #region Base action
+        #region Base action create/read/update/delete
         public ActionResult Index()
         {
             return View(fileRepository.GetAllFiles());
@@ -145,6 +145,10 @@ namespace plan2plan.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Запускает генератор превью файлов .jpg по pdf-файлу
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult PreviewPdfGenerator()
         {
@@ -180,11 +184,9 @@ namespace plan2plan.Controllers
                         try
                         {
                             await actionRepository.SaveAsync();
-
                         }
                         catch (Exception ex)
                         {
-
                             return Json(new { is_ok = false, error_message = ex.Message }, JsonRequestBehavior.AllowGet);
                         }
                         return Json(new { is_ok = true }, JsonRequestBehavior.AllowGet);

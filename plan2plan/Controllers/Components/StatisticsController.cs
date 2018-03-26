@@ -10,27 +10,46 @@ using System.Web.Mvc;
 
 namespace plan2plan.Controllers.Components
 {
+    [Authorize]
     public class StatisticsController : Controller
     {
-        private IStatisticsRepository stattisticsRepository;
+        private IStatisticsRepository statisticsRepository;
 
         public StatisticsController(IStatisticsRepository statisticsRepository)
         {
-            this.stattisticsRepository = statisticsRepository;
+            this.statisticsRepository = statisticsRepository;
         }
+
+        public ActionResult Index()
+        {
+            return View(statisticsRepository.GetAllStatistics().OrderByDescending(x => x.ID));//
+        }
+
+        public ActionResult Delete(int id)
+        {
+            if (id > 0)
+            {
+                statisticsRepository.Delete(id);
+                statisticsRepository.Save();
+            }
+            return RedirectToAction("Index");
+        }
+
         /// <summary>
         /// Сохраняем всю информацию о пользователе и о действиях которые он совершает на странице
+        /// Пока сохраняем только первый вход
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<JsonResult> SaveInfo(PersonViewModel id)
         {
-            StatisticsWorker convertStatistics = new StatisticsWorker(stattisticsRepository, id, Session.SessionID);
-            stattisticsRepository.Create(convertStatistics.statistic);
+            StatisticsWorker convertStatistics = new StatisticsWorker(statisticsRepository, id, Session.SessionID);
+            statisticsRepository.Create(convertStatistics.statistic);
             try
             {
-                await stattisticsRepository.Save();
+                await statisticsRepository.Save();
             }
             catch (Exception ex)
             {

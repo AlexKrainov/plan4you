@@ -4,10 +4,12 @@
     margin-left: 5px;
 }
 
+.action-file a {
+    font-size: larger;
+}
 .action-file a:hover {
     font-size: x-large;
 }
-
 
 /*#endregion */
 
@@ -32,3 +34,7 @@ a.not_selected {
 }
 
 /*#endregion */
+
+.bootstrap-table {
+    margin: 0px 10px;
+}

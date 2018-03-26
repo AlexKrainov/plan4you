@@ -35,6 +35,19 @@ namespace plan2plan.Filter.Auth
                 HttpContext.Current.Session[aliasUser] = value;
             }
         }
+
+        public static int CurrentUserID
+        {
+            get
+            {
+                if (user != null)
+                    return -1;
+
+                var userID = GetCookie(aliasUserID);
+
+                return int.TryParse(userID, out int id) == true ? id : -1;
+            }
+        }
         /// <summary>
         /// Получаем User
         /// </summary>
@@ -84,7 +97,7 @@ namespace plan2plan.Filter.Auth
         /// <param name="dateTime">На сколько нужно сохранить информацию</param>
         internal static void SaveCookieID(string nameCookie, int id, DateTime dateTime)
         {
-            var cookie = new HttpCookie(nameCookie, id.EncryptionIDtoString()); 
+            var cookie = new HttpCookie(nameCookie, id.EncryptionIDtoString());
             cookie.Expires = dateTime;
             HttpContext.Current.Response.Cookies.Add(cookie);
         }

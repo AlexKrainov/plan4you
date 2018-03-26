@@ -1,16 +1,16 @@
 ﻿@model List<plan2plan.Domain.Core.File>
 
+
 <!--==========================
-  Testimonials Section
+  Check-sheets section
 ============================-->
-<section id="testimonials" class="wow fadeInUp">
+<section id="testimonials" class="wow fadeInUp test">
     <div class="container">
         <div class="section-header">
             <h2>Чек-листы</h2>
             <p>Чек-листы способны значительно упростить нашу жизнь - начиная со списка покупок на неделю и заканчивая распорядком дня и списком книг к прочтению в этом году. Здесь вы можете бесплатно скачать чек-листы, а через форму обратной связи можете предложить свои списки.  </p>
         </div>
         <div class="owl-carousel testimonials-carousel">
-
             @foreach (var file in Model)
             {
                 <div class="testimonial-item" data-img-id="@file.ID">
@@ -19,16 +19,10 @@
                             <img src="@file.PreviewPath_min" alt="" class="like_img">
                         </div>
                         <div class="details">
-                            <h4>Walter White</h4>
+                            @*<h4>Walter White</h4>*@
                             <span>@file.Title</span>
                             <div class="action-file">
-                                @*<span>
-                                        <vue-like  data-type="check_sheets" data-action="likes" data-id="@file.ID"></vue-like>
-                                    </span>*@
-                                <span>
-                                    <span data-type="check_sheets" data-action="likes" data-id="@file.ID" class="like_container"></span>
-                                    <a href="" onclick="return false;"><i class="fa fa-heart"></i></a>
-                                </span>
+                                <vue-like doctype="check_sheets" id="@file.ID"></vue-like>
                                 <span>
                                     <a href="" onclick="file_worker.open_download_dialog(this); return false;" title="Скачать"><i class="fa fa-download"></i></a>
                                     <span data-type="check_sheets" data-action="downloads" data-id="@file.ID"></span>
@@ -41,11 +35,9 @@
         </div>
     </div>
 </section><!-- #testimonials -->
-@*<script>
-        new Vue({
-            el: "#testimonials"
-        })
-    </script>*@
+<script>
+
+</script>
 
 <div id="download_dialog_container"></div>
 <script src="~/Scripts/file_worker.js"></script>
