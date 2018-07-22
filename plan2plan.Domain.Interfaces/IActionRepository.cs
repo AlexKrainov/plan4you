@@ -15,6 +15,8 @@ namespace plan2plan.Domain.Interfaces
         IEnumerable<Action> GetActionsWithFileByFileID();
         int GetCountLikesByFileID(Guid fileID);
         int GetCountDownloadsByFileID(Guid fileID);
+        int GetCountLikeByIP(string ip);
+        int GetCountDownloadsByIP(string ip);
         /// <summary>
         /// Лайкнул ли данный IP файл
         /// </summary>
@@ -22,7 +24,7 @@ namespace plan2plan.Domain.Interfaces
         /// <param name="fileID"></param>
         /// <returns></returns>
         bool IsLikeByIP(string ip, Guid fileID);
-        void Update(string ip, Guid fileID);
-        
+        void CreateOrUpdate(string ip, Guid fileID);
+
     }
 }

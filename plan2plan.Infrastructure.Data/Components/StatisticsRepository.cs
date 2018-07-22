@@ -11,6 +11,7 @@ namespace plan2plan.Infrastructure.Data.Components
     public class StatisticsRepository : IStatisticsRepository
     {
         private plat2platContext context;
+        private const string myIP = "95.26.36.8";
 
         public StatisticsRepository(plat2platContext _context)
         {
@@ -32,7 +33,19 @@ namespace plan2plan.Infrastructure.Data.Components
 
         public IEnumerable<Statistics> GetAllStatistics()
         {
-            return context.Statistics;
+            return context.Statistics.Where(x => x.IP != myIP);
+        }
+
+        public int GetAllVisitByNameRegion(List<string> regions)
+        {
+            int count = 0;
+            for (int i = 0; i < regions.Count(); i++)
+            {
+                string region = regions[i];
+                count = context.Statistics.Count(x => x.City == region && x.IP != myIP ) + count;
+            }
+
+            return count;
         }
 
         public Statistics GetStatisticsByID(int id)

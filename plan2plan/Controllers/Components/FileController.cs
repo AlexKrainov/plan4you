@@ -11,20 +11,26 @@ using System.Threading.Tasks;
 using plan2plan.Common.Image;
 using System.Net;
 using plan2plan.Filter.Auth;
+using Serilog;
 
 namespace plan2plan.Controllers
 {
     using File = plan2plan.Domain.Core.File;
-    [Authorize]
+
+    [MyAuthorize(Roles = "admin")]
     public class FileController : Controller
     {
         private IFileRepository fileRepository;
         private IActionRepository actionRepository;
+        private IEmailRepository emailRepository;
 
-        public FileController(IFileRepository fileRepository, IActionRepository actionRepository)
+        public FileController(IFileRepository fileRepository,
+            IActionRepository actionRepository,
+            IEmailRepository emailRepository)
         {
             this.fileRepository = fileRepository;
             this.actionRepository = actionRepository;
+            this.emailRepository = emailRepository;
         }
 
         #region Base action create/read/update/delete
@@ -39,6 +45,7 @@ namespace plan2plan.Controllers
 
             if (file == null)
             {
+                Log.Warning("Не нашелся файл с id: {id}", id);
                 return HttpNotFound();
             }
             return View(file);
@@ -75,6 +82,7 @@ namespace plan2plan.Controllers
                     }
                     catch (Exception ex)
                     {
+                        Log.Error(ex, "Ошибка при создании файла");
                         throw ex;
                     }
                 }
@@ -138,10 +146,31 @@ namespace plan2plan.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-
-            fileRepository.Delete(id);
+            string path = fileRepository.Delete(id);
             fileRepository.Save();
+
+            RemoveFile(path);
+
             return RedirectToAction("Index");
+        }
+
+        private void RemoveFile(string path)
+        {
+            var serverPath = Server.MapPath("../" + path);
+            var fileInfo = new FileInfo(serverPath);
+
+            try
+            {
+
+                if (fileInfo.Exists == true)
+                {
+                    fileInfo.Delete();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Remove file, error: " + ex.Message);
+            }
         }
         #endregion
 
@@ -161,7 +190,8 @@ namespace plan2plan.Controllers
         [HttpGet]
         public async Task<ActionResult> DownloadFile(string id, bool isLoad, string mail)
         {
-            if (Guid.TryParse(id, out Guid result) == true && string.IsNullOrEmpty(mail) == false)
+            Guid result;
+            if (Guid.TryParse(id, out result) == true && string.IsNullOrEmpty(mail) == false)
             {
                 var file = await fileRepository.GetFileByIDTask(result);
 
@@ -169,11 +199,12 @@ namespace plan2plan.Controllers
                 {
                     if (isLoad == false)
                     {
+                        //http://kino-hd1080.ru/998-nevidimyy-gost-2016-smotret-onlayn.html
 
                         var action = new Domain.Core.Action
                         {
                             dateTime = DateTime.Now,
-                            email = new Email { Mail = mail },
+                            email = emailRepository.GetOrCreateEmail(mail, Request.UserHostAddress),
                             IP = Request.UserHostAddress,
                             isDownload = true,
                             FileID = result
@@ -187,6 +218,7 @@ namespace plan2plan.Controllers
                         }
                         catch (Exception ex)
                         {
+                            Log.Error(ex, "Ошибка при асинхронной загрузки файла");
                             return Json(new { is_ok = false, error_message = ex.Message }, JsonRequestBehavior.AllowGet);
                         }
                         return Json(new { is_ok = true }, JsonRequestBehavior.AllowGet);
@@ -199,21 +231,6 @@ namespace plan2plan.Controllers
                 }
             }
             return Json(new { is_ok = false, error_message = "Ошибка при получении ID файла или электронной почты." }, JsonRequestBehavior.AllowGet);
-        }
-
-        [AllowAnonymous]
-        [HttpGet]
-        public ActionResult Test(int fileid)
-        {
-            if (fileid == 1)
-            {
-                return Json(54, JsonRequestBehavior.AllowGet);
-            }
-            else if (fileid == 2)
-            {
-                return Json(26, JsonRequestBehavior.AllowGet);
-            }
-            return Json(0, JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>

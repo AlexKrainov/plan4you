@@ -22,11 +22,17 @@
 
 
 <script>
+    //var script = document.createElement('script');script.src = "https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js";document.getElementsByTagName('head')[0].appendChild(script);
     //var src = []; $("._4rbun img").each(function(el) { src.push({ src: $(this).attr("src"), message: $(this).attr("alt")}); }); JSON.stringify(src);
     var insta_images = [];
     $(function () {
         $.getJSON("/Source/Instagram/InstagramSource.json", (result) => {
-            insta_images = result.splice(0, 8);// берем только последние 8 элементов
+
+            if (is_mobile() == true) {
+                insta_images = result.splice(0, 4);// берем только последние 4 элементов
+            } else {
+                insta_images = result.splice(0, 8);// берем только последние 4 элементов
+            }
 
             var insta_images_vue = new Vue({
                 el: '#instagram',
@@ -52,4 +58,12 @@
             });
         });
     });
+
+    function is_mobile() {
+        if (window.innerWidth <= 800 && window.innerHeight <= 600) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 </script>

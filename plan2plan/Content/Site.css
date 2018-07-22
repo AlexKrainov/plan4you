@@ -1,15 +1,28 @@
-﻿/*#region images pdf */
+﻿@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*#region images pdf */
 
 .action-file a:nth-child(2) {
+    margin-left: 5px;
+}
+
+span[data-action=downloads] {
     margin-left: 5px;
 }
 
 .action-file a {
     font-size: larger;
 }
-.action-file a:hover {
-    font-size: x-large;
-}
+
+    .action-file a:hover {
+        font-size: x-large;
+    }
 
 /*#endregion */
 
@@ -38,3 +51,25 @@ a.not_selected {
 .bootstrap-table {
     margin: 0px 10px;
 }
+
+
+/*#region input[placeholder] */
+
+::-webkit-input-placeholder {
+	color: #b7bac9 !important;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+	color: #b7bac9 !important;
+}
+
+:-ms-input-placeholder {
+	color: #b7bac9 !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+	color: #b7bac9 !important;
+}
+
+/*#endregion */
+

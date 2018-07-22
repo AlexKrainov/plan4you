@@ -20,11 +20,13 @@ var file_worker = {
         file_worker.file.id = -1;
         //$("#person_mail").val("");
         $(".invalid-feedback").hide();
+        $('#downloadDialog div.input-group-append button').removeAttr("disabled");// удаляем "disabled" после скачивания
     },
     download_file: function () {
         let mail = $("#person_mail").val();
 
         if (isEmail(mail) == true) { //validation email
+            $(this).attr("disabled");// устанавливаем "disabled", чтобы не нажимали во время выгрузки документа
             file_worker.download_file_from_server(file_worker.file.id, mail)
                 .then(function (result) {
                     if (result.is_ok == true) {
@@ -36,6 +38,7 @@ var file_worker = {
                         alert("Извините, произошла ошибка при скачивании файле. Напишите нам и мы исправим.");
                         console.log(result);
                     }
+                    $('#downloadDialog div.input-group-append button').removeAttr("disabled");// удаляем "disabled" после скачивания
                 });
         } else {
             $(".invalid-feedback").show();

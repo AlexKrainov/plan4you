@@ -13,10 +13,13 @@ namespace plan2plan.Controllers
     public class FeedbackController : Controller
     {
         private IFeedbackRepository feedbackRepository;
+        private IEmailRepository emailRepository;
 
-        public FeedbackController(IFeedbackRepository feedbackRepository)
+        public FeedbackController(IFeedbackRepository feedbackRepository,
+            IEmailRepository emailRepository)
         {
             this.feedbackRepository = feedbackRepository;
+            this.emailRepository = emailRepository;
         }
 
         [HttpPost]
@@ -25,7 +28,7 @@ namespace plan2plan.Controllers
             if (this.ModelState.IsValid == true)
             {
                 FeedbackWorker feedbackWorker = new FeedbackWorker(feedbackView);
-                var newFeedback = feedbackWorker.GetModelFeedback();
+                var newFeedback = feedbackWorker.GetModelFeedback(emailRepository, Request.UserHostAddress);
 
                 feedbackRepository.Create(newFeedback);
 

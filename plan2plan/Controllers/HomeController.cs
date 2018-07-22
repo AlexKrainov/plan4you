@@ -1,7 +1,12 @@
-﻿using plan2plan.Domain.Interfaces;
+﻿using MailKit.Net.Smtp;
+using MimeKit;
+using plan2plan.Domain.Interfaces;
+using Serilog;
+using Serilog.Debugging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,11 +23,11 @@ namespace plan2plan.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            ViewBag.PreviewFiles = fileReposotory.GetFiles().ToList();
+            ViewBag.PreviewFiles = fileReposotory.GetFiles().OrderBy(x => x.Order).ToList();
 
             return View();
         }
-
+   
         public ActionResult PreviewDocs()
         {
             return PartialView();
@@ -38,7 +43,7 @@ namespace plan2plan.Controllers
             return PartialView();
         }
         public ActionResult PreviewInstagram()
-        { 
+        {
             return View();
         }
     }

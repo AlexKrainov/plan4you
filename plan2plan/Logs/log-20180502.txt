@@ -1,0 +1,2 @@
+2018-05-02 20:09:09.346 +03:00 [Information] Start aplication!
+2018-05-02 21:44:04.779 +03:00 [Information] Start aplication!

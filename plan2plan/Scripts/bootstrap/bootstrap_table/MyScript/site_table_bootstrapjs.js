@@ -1,8 +1,8 @@
 ﻿$(function () {
     if ($('#file_table').length != 0) {
         bTable.init_table();
-    } else if ($("#s_table").length != 0) {
-        s_table.draw_table();
+    } else if ($("#tbl-statistics").length != 0) {
+        tbl-statistics.draw_table();
     }
 
 });
@@ -33,11 +33,11 @@ var bTable = {
 
 //Для таблицы на странице статистики
 
-var s_table = {
+var tbl-statistics = {
     $table: null,
     draw_table: function () {
         //http://bootstrap-table.wenzhixin.net.cn/documentation/#table-options
-        bTable.$table = $('#s_table').bootstrapTable(
+        bTable.$table = $('#tbl-statistics').bootstrapTable(
             {
                 //toolbar: "#toolbar",
                 search: true,

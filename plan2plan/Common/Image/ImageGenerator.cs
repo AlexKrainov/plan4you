@@ -1,6 +1,7 @@
 ﻿
 using PdfiumViewer;
 using plan2plan.Domain.Interfaces;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -42,12 +43,12 @@ namespace plan2plan.Common.Image
 
                 if (isExists) //Если pdf файл существует
                 {
-                    #region create min preview
-                    if (string.IsNullOrEmpty(file.PreviewPath_min) || new FileInfo(server.MapPath(file.PreviewPath_min)).Exists == false) //Если превью файл не существует - создаем
-                    {
-                        isPreviewReady = CreatePreview(file, "preview_" + file.FileName + "_min.jpg", "min");
-                    }
-                    #endregion
+                    //#region create min preview
+                    //if (string.IsNullOrEmpty(file.PreviewPath_min) || new FileInfo(server.MapPath(file.PreviewPath_min)).Exists == false) //Если превью файл не существует - создаем
+                    //{
+                    //    isPreviewReady = CreatePreview(file, "preview_" + file.FileName + "_min.jpg", "min");
+                    //}
+                    //#endregion
 
                     #region create avg preview
                     if (string.IsNullOrEmpty(file.PreviewPath_avg) || new FileInfo(server.MapPath(file.PreviewPath_avg)).Exists == false)
@@ -94,6 +95,7 @@ namespace plan2plan.Common.Image
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Ошибка при создании превью");
                 // handle exception here;
             }
             return result;

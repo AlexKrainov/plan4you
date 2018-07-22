@@ -14,7 +14,6 @@ namespace plan2plan.Util.Kernel
     {
         public override void Load()
         {
-
             Bind<IFileRepository>().To<FileRepository>();
             Bind<IStatisticsRepository>().To<StatisticsRepository>();
             Bind<IFeedbackRepository>().To<FeedbackRepository>();
@@ -23,7 +22,8 @@ namespace plan2plan.Util.Kernel
             Bind<IUserRepository>().To<UserRepository>();
             Bind<IUserSessionRepository>().To<UserSessionRepository>();
             Bind<IUserTypeRepository>().To<UserTypeRepository>();
-
+            Bind<ILetterRepository>().To<LetterRepository>();
+            Bind<ILetterTypeRepository>().To<LetterTypeRepository>();
         }
     }
 }

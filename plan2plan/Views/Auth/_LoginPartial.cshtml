@@ -1,31 +1,40 @@
 ﻿
 @{
-    plan2plan.Controllers.User.Authenticate authenticate = null;
-    if (ViewBag.Authenticate != null)
+    bool isAdmin = false;
+
+    string name = default(string);
+    var user = plan2plan.Filter.Auth.UserStorage.Get();
+
+    if (user != null)
     {
-        authenticate = (plan2plan.Controllers.User.Authenticate)ViewBag.Authenticate;
+        name = user.Name ?? user.Email.Mail;
+        isAdmin = user.UserTypeID == 1 ? true : false; // 1 is admin
     }
 }
 
-@if (authenticate != null || string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name) == false)
+@if (string.IsNullOrEmpty(name) == false)
 {
-    if (authenticate != null && authenticate.IsAuthenticated == true)
-    {
-        //ToDo: ActionLink to Profil
-        <a href="" onclick="return false;">@authenticate.UserName</a>
-        @*@Html.ActionLink(Model.UserName, "Index", "Account")*@
-    }
-    else if (string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name) == false)
-    {
-        <a href="" onclick="return false;">@HttpContext.Current.User.Identity.Name</a>
-        @*@Html.ActionLink(HttpContext.Current.User.Identity.Name, "Index", "Account")*@
-    }
+    //ToDo: ActionLink to Profil
+    <a href="" onclick="return false;">@name</a>
     <ul style="display: none;">
+        @if (isAdmin == true)
+        {
+            @*<li>
+                    @Html.ActionLink(Model.UserName, "Index", "Account")
+                </li>*@
+            <li>
+                @Html.ActionLink("Работа с файлами", "Index", "File")
+            </li>
+            <li>
+                @Html.ActionLink("Статистика", "List", "Statistics")
+            </li>
+            <li>
+                @Html.ActionLink("Статистика на карте", "GeoChart", "Statistics")
+            </li>
+        }
         <li>
-            @Html.ActionLink("Работа с файлами", "Index", "File")
-        </li>
-        <li>
-            @Html.ActionLink("Статистика", "Index", "Statistics")
+            <a href="/User/PersonPage?#person-data-tab">Личный кабинет</a>
+            @*@Html.ActionLink("Личный кабинет", "PersonPage", "User")*@
         </li>
         <li>
             @Html.ActionLink("Выход", "LogOut", "Auth")

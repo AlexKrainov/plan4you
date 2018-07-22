@@ -9,8 +9,23 @@ namespace plan2plan.Domain.Interfaces
 {
     public interface IUserRepository
     {
-        User GetUser(int userID, string login);
-        int GetUserID(string login, string password);
-        bool isUserExist(string login, string password);
+        User GetUserByID(Guid userID);
+        User GetUserByEmail(string mail);
+        Task<User> GetUserByEmailAsync(string mail);
+        /// <summary>
+        /// Ищет пользователя по ключу: почта-пароль
+        /// </summary>
+        /// <param name="loginOrEmail"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        User GetUser(string email, string password);
+        Guid GetUserID(string email, string password);
+        bool isUserExistByEmailAndPassword(string email, string password);
+        bool isUserExistByEmail(string email);
+        void Create(User user);
+        bool UpdatePassword(Guid id, string newPassword);
+        void Update(User user);
+        int Save();
+        Task<int> SaveAsync(); 
     }
 }

@@ -1,0 +1,290 @@
+﻿@{
+    plan2plan.Domain.Core.UserProfile.UserProfileSessionData userProfile = Model;
+}
+<section class="person_data">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-8">
+            @using (Ajax.BeginForm("UpdateName", "User", new AjaxOptions
+            {
+                HttpMethod = "Get",
+                OnBegin = "on_begin_ajax",
+                OnSuccess = "on_success_ajax"
+            }))
+            {
+                <h5>Имя*</h5>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Введите ваше имя" aria-label="Введите ваше имя" aria-describedby="basic-addon2"
+                           id="name" name="name" data-value="@userProfile.Name" value="@userProfile.Name" onkeyup="onkeyupInput(this);"
+                           required minLength="3" maxlength="16">
+                    <div class="input-group-append">
+                        <button class="btn" type="submit" disabled="disabled">
+                            <i class='fa fa-circle-o-notch fa-spin' style="display:none;"></i>
+                            Сохранить
+                        </button>
+                    </div>
+                    <span class="fi-circle-check fi-icon" title="circle check" aria-hidden="true" style="display: none;"></span>
+                    <span class="fi-circle-x fi-icon fi-red" title="circle check" aria-hidden="true" style="display: none;"></span>
+                </div>
+                <div class="invalid-feedback"></div>
+            }
+        </div>
+        <div class="col-xs-6 col-md-4">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-8">
+            @using (Ajax.BeginForm("UpdateSurName", "User", new AjaxOptions
+            {
+                HttpMethod = "Get",
+                OnBegin = "on_begin_ajax",
+                OnSuccess = "on_success_ajax"
+            }))
+            {
+                <h5>Фамилия</h5>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Введите вашу фамилию" aria-label="Введите вашу фамилию" aria-describedby="basic-addon2"
+                           id="surname" name="surname" data-value="@userProfile.SurName" value="@userProfile.SurName" onkeyup="onkeyupInput(this);">
+                    <div class="input-group-append">
+                        <button class="btn" type="submit" disabled="disabled">
+                            <i class='fa fa-circle-o-notch fa-spin' style="display:none;"></i>
+                            Сохранить
+                        </button>
+                    </div>
+                    <span class="fi-circle-check fi-icon" title="circle check" aria-hidden="true" style="display: none;"></span>
+                    <span class="fi-circle-x fi-icon fi-red" title="circle check" aria-hidden="true" style="display: none;"></span>
+                </div>
+                <div class="invalid-feedback"></div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-8">
+            @using (Ajax.BeginForm("UpdateEmail", "User", new AjaxOptions
+            {
+                HttpMethod = "Get",
+                OnBegin = "on_begin_ajax",
+                OnSuccess = "on_success_ajax"
+            }))
+            {
+                <h5>Почта*</h5>
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Введите вашу почту" aria-label="Введите вашу почту" aria-describedby="basic-addon2"
+                           id="email" name="email" data-value="@userProfile.Email.Mail" value="@userProfile.Email.Mail" onkeyup="onkeyupInput(this);">
+                    <div class="input-group-append">
+                        <button class="btn" type="submit" disabled="disabled">
+                            <i class='fa fa-circle-o-notch fa-spin' style="display:none;"></i>
+                            Сохранить
+                        </button>
+                    </div>
+                    <span class="fi-circle-check fi-icon" title="circle check" aria-hidden="true" style="display: none;"></span>
+                    <span class="fi-circle-x fi-icon fi-red" title="circle check" aria-hidden="true" style="display: none;"></span>
+                </div>
+                <div class="invalid-feedback"></div>
+                if (userProfile.Email.isEmailConfirmed == false)
+                {
+                    <small id="emailHelp" class="form-text text-muted">Почта не подтверждена.@Html.ActionLink("Подтвердить", "ConfirmEmail")</small>
+                } else
+                {
+                    <small id="emailHelp" class="form-text text-muted">Почта подтверждена.</small>
+                }
+
+            }
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        @*<div class="col-xs-12 col-sm-6 col-md-8">*@
+        @*<form-first-name id="name2" value="@userProfile.Name"></form-first-name>*@
+    </div>
+</section>
+
+<style>
+    .fi-icon {
+        color: #06e763;
+        margin: auto 10px;
+        font-size: 20px;
+        opacity: 0;
+        transition: opacity 0.3s, transform 0.5s;
+    }
+
+    .fi-circle-x.fi-red {
+        color: red;
+    }
+
+    .fi-icon-show {
+        opacity: 1 !important;
+        transform: rotate(360deg);
+    }
+
+    div.input-group-append button {
+        border-radius: 0px .25rem .25rem 0px !important;
+    }
+
+    .display-none {
+        display: none;
+    }
+
+    button[type=submit]:hover:disabled {
+        cursor: auto;
+    }
+
+    button[type=submit]:disabled {
+        background-color: #656565;
+    }
+
+    button[type=submit]:hover:enabled {
+        background: none;
+        color: #06e763; /*#656565*/
+        border: 0.5px solid #06e763;
+        box-shadow: rgba(6,231,99, 0.8) 1px 0.5px 4px 2px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: 20px 0 10px 0;
+    }
+</style>
+
+<script>
+    function on_begin_ajax() {
+        $(this).find("button[type=submit]").attr("disabled", "disabled");
+        $(this).find("button[type=submit] i").show();
+    }
+
+    function on_success_ajax(result) {
+        var $input = $("#" + result.meta);
+        var $divInputGroup = $input.parent();
+        var $error_element = $divInputGroup.parent().find("div.invalid-feedback");
+
+        //reset style
+        (function () {
+            $divInputGroup.find("i").hide();
+            $divInputGroup.find("button[type=submit]").removeAttr("disabled");
+
+            $error_element.hide();
+            $input.removeClass("is-invalid is-valid");
+        })();
+
+        //if is OK
+        if (result.is_ok == true) {
+            $input.attr("data-value", result.value).val(result.value).addClass("is-valid");
+            $divInputGroup.find("span.fi-circle-check").show().addClass("fi-icon-show");
+
+            onkeyupInput.apply($input, $input);
+        } else {// if is fail
+            $divInputGroup.find("span.fi-circle-x").show().addClass("fi-icon-show");
+            $input.addClass("is-invalid");
+            $error_element.text(result.message).show();
+
+            if (result.to_log_in && result.to_log_in == true) {//Перекидываем на страницу авторизации
+                location.reload();
+            }
+        }
+
+        //reset style after 5 second
+        setTimeout(function () {
+            $divInputGroup.find("span.fi-circle-check").hide().removeClass("fi-icon-show");
+            $divInputGroup.find("span.fi-circle-x").hide().removeClass("fi-icon-show");
+            $input.removeClass("is-valid is-invalid");
+            //error_element.hide();
+        }, 5000);
+    }
+
+    function onkeyupInput(_this) {
+        var value = $(_this).val();
+        var data_value = $(_this).attr("data-value");
+
+        if (value !== data_value) {
+            $(_this).parent().find("button[type=submit]").removeAttr("disabled");
+        } else {
+            $(_this).parent().find("button[type=submit]").attr("disabled", "disabled");
+        }
+    }
+
+</script>
+
+@*<div style="display: none;">
+        <div id="template" class="col-xs-12 col-sm-6 col-md-8">
+            <div>
+                <label for="name">Имя</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Введите ваше имя" aria-label="Введите ваше имя" aria-describedby="basic-addon2"
+                           id="name" name="name" v-model="value">
+                    <div class="input-group-append">
+                        <button class="btn" type="button" v-on:click="onSave();">
+                            ok
+                            <i class="fa fa-circle-o-notch fa-spin" v-if="showLoading"></i>
+                        </button>
+                    </div>
+                    <transition name="fade">
+                        <span class="fi-circle-check fi" v-if="showOk" aria-hidden="true"></span>
+                    </transition>
+                    <transition name="fade">
+                        <span class="fi-circle-x fi" v-if="showBad" aria-hidden="true"></span>
+                    </transition>
+                </div>
+                <transition name="fade">
+                    <div class="invalid-feedback" style="display: unset;" v-if="showBad"></div>
+                </transition>
+            </div>
+        </div>
+    </div>
+    <script>
+        Vue.component("form-first-name", {
+            template: '#template',
+            props: ["value", "id", "showLoading", "showOk", "showBad"],
+            data: function () {
+                this.resetDate();
+                return {};
+            },
+            methods: {
+                onSave: function () {
+                    this.onSaveBind(this);
+                },
+                onSaveBind: function (_this) {
+                    _this.showLoading = true;
+
+                    $.ajax({
+                        url: '/User/Name',
+                        type: "GET",
+                        data: { name: this.value },
+                        success: function (result) {
+                            console.log(result);
+                            _this.showLoading = false;
+
+                            if (result.is_ok == true) {
+                                _this.showOk = true;
+                            } else {
+                                _this.showBad = true;
+                            }
+                        }
+                    });
+                },
+                onBind: function () {
+
+                },
+                resetDate: function () {
+                    this.showLoading = false;
+                    this.showOk = false;
+                    this.showBad = false;
+
+                }
+            }
+        });
+
+        new Vue({
+            el: ".person_data"
+        });
+    </script>*@
+
+
+@*/*.fade-enter-active {
+        transition: all 2s cubic-bezier(1.0, 0.5, 0.8, 1.0)
+    }
+
+    .fade-enter, .slide-fade-leave-to {
+        transform: translateX(20px);
+        opacity: 0;
+    }*@
+
+

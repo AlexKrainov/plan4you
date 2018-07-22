@@ -19,6 +19,7 @@ namespace plan2plan.Domain.Core
         public string Status { get; set; }
         public bool isMobile { get; set; }
         public string Referrer { get; set; }
+        public string FullReferrer { get; set; }
         public string Screen_size { get; set; }
         public string Index { get; set; }
         public string Location { get; set; }

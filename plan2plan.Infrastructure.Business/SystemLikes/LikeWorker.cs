@@ -35,13 +35,14 @@ namespace plan2plan.Infrastructure.Business.SystemLikes
 
         public async Task<int> Update()
         {
+            Guid id;
             if (fileType != FileType.none
-                && Guid.TryParse(fileID, out Guid id) == true)
+                && Guid.TryParse(fileID, out id) == true)
             {
                 switch (fileType)
                 {
                     case FileType.check_sheets:
-                        actionRepository.Update(IP, id);
+                        actionRepository.CreateOrUpdate(IP, id);
                         return await actionRepository.SaveAsync();
                     case FileType.none:
                         break;

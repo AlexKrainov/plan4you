@@ -11,8 +11,8 @@ namespace plan2plan.Infrastructure.Data
     public partial class plat2platContext : DbContext
     {
         public plat2platContext()
-            : base("Data Source=u479185.mssql.masterhost.ru;initial catalog=u479185_bujodb;user id=u479185;password=sagemicerea7;multipleactiveresultsets=True;application name=EntityFramework;")
-            //: base("Server=DELL\\SQLEXPRESS;Database=BujoDB;Trusted_Connection=True;")
+        : base("Data Source=u479185.mssql.masterhost.ru;initial catalog=u479185_bujodb;user id=u479185;password=sagemicerea7;multipleactiveresultsets=True;application name=EntityFramework;")
+       // : base("Server=DELL\\SQLEXPRESS;Database=BujoDB;Trusted_Connection=True;")
         {
         }
 
@@ -26,6 +26,8 @@ namespace plan2plan.Infrastructure.Data
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<UserSession>().ToTable("UserSession");
             modelBuilder.Entity<Email>().ToTable("Email");
+            modelBuilder.Entity<Letter>().ToTable("Letter");
+            modelBuilder.Entity<LetterType>().ToTable("LetterType");
         }
 
         public virtual DbSet<Feedback> Feedbacks { get; set; }
@@ -36,5 +38,7 @@ namespace plan2plan.Infrastructure.Data
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<Domain.Core.Action> Actions { get; set; }
+        public virtual DbSet<Letter> Letters { get; set; }
+        public virtual DbSet<LetterType> LetterType { get; set; }
     }
 }

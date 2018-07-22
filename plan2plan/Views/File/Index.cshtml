@@ -6,7 +6,7 @@
 }
 <main id="main">
     <section id="team" class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-        <div class="container">
+        <div class="">@*container*@
             @*style="max-width: 100%;"*@
             <div class="section-header">
                 <h2>Работа с файлами</h2>
@@ -77,15 +77,8 @@
     </section>
 </main>
 <!-- #region Bootstrap-table (CSS)-->
-<link href="~/Scripts/bootstrap/bootstrap_table/bootstrap-table.min.css" rel="stylesheet" />
-<link href="~/Scripts/bootstrap/bootstrap_table/extensions/sticky-header/bootstrap-table-sticky-header.css" rel="stylesheet" />
+@Styles.Render("~/Vendor/Bootstrap-table-css")
 <!-- #endregion -->
 <!-- #region Bootstrap-table (JS)-->
-@*<script src="~/Scripts/bootstrap/bootstrap_table/bootstrap-table-locale-all.min.js"></script>*@
-<script src="~/Scripts/bootstrap/bootstrap_table/bootstrap-table.min.js"></script>
-@*<script src="~/Scripts/bootstrap/bootstrap_table/extensions/accent-neutralise/bootstrap-table-accent-neutralise.js"></script>*@
-<script src="~/Scripts/bootstrap/bootstrap_table/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
-<script src="~/Scripts/bootstrap/bootstrap_table/locale/bootstrap-table-ru-RU.js"></script>
-@*<script src="~/Scripts/bootstrap/bootstrap_table/locale/bootstrap-table-eu-EU.js"></script>*@
-<script src="~/Scripts/bootstrap/bootstrap_table/MyScript/site_table_bootstrapjs.js"></script>
+@Scripts.Render("~/Vendor/Bootstrap-table-script")
 <!-- #endregion -->

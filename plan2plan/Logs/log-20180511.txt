@@ -1,0 +1,12 @@
+2018-05-11 11:28:53.301 +03:00 [Information] Start aplication!
+2018-05-11 11:40:51.646 +03:00 [Information] Start aplication!
+2018-05-11 12:04:32.636 +03:00 [Information] Start aplication!
+2018-05-11 12:19:56.828 +03:00 [Information] Start aplication!
+2018-05-11 12:21:06.085 +03:00 [Information] Start aplication!
+2018-05-11 17:44:39.652 +03:00 [Information] Start aplication!
+2018-05-11 17:47:28.328 +03:00 [Information] Start aplication!
+2018-05-11 17:47:57.466 +03:00 [Information] Start aplication!
+2018-05-11 17:48:08.284 +03:00 [Information] Start aplication!
+2018-05-11 17:48:37.842 +03:00 [Information] Start aplication!
+2018-05-11 17:48:54.268 +03:00 [Information] Start aplication!
+2018-05-11 17:49:06.779 +03:00 [Information] Start aplication!

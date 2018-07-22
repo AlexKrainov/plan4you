@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "PersonPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        color: #656565;
+        background-color: #06e763;
+    }
+
+    .nav-pills a {
+        color: #656565;
+    }
+</style>
+<div class="container  ">
+    <div class="row" style="position: relative;padding: 1rem;margin: 1rem -15px 0;border-width: .2rem 0 0;">
+        <div class="col-md-2 order-md-1">
+            @*<h4 class="mb-3">Восстановление пароля</h4>*@
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="person-data-tab" data-toggle="pill" href="#person-data" role="tab" aria-controls="person-data" aria-selected="true"
+                   onclick="window.location.hash = 'person-data-tab'; $('#person-data-tab-submit').click();  return true;">Личные данные</a>
+                <a class="nav-link" id="my-order-tab" data-toggle="pill" href="#my-order" role="tab" aria-controls="my-order" aria-selected="false"
+                   onclick="window.location.hash = 'my-order-tab'; $('#my-order-tab-submit').click(); return true;">Мои заказы</a>
+                @using (Ajax.BeginForm("PersonData", "User", new AjaxOptions
+                {
+                    LoadingElementId = "wait_svg",
+                    HttpMethod = "Post",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "person-data"
+                }))
+                {
+                    <button type="submit" style="display: none;" id="person-data-tab-submit"></button>
+                }
+
+                @using (Ajax.BeginForm("MyOrder", "User", new AjaxOptions
+                {
+                    //OnBegin = "",
+                    LoadingElementId = "wait_svg",
+                    HttpMethod = "Post",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "my-order"
+                }))
+                {
+                    <button type="submit" style="display: none;" id="my-order-tab-submit"></button>
+                }
+            </div>
+        </div>
+        <div class="col-md-10 order-md-7">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div id="wait_svg" class="mx-auto" style="width: 104px; display:none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                        <circle cx="50" cy="50" fill="none" stroke-linecap="round" r="20" stroke-width="2" stroke="#656565" stroke-dasharray="31.41592653589793 31.41592653589793" transform="rotate(120 50 50)">
+                            <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite">
+                            </animateTransform>
+                        </circle>
+                        <circle cx="50" cy="50" fill="none" stroke-linecap="round" r="17" stroke-width="2" stroke="#06e763" stroke-dasharray="26.703537555513243 26.703537555513243" stroke-dashoffset="26.703537555513243" transform="rotate(-120 50 50)">
+                            <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;-360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite">
+                            </animateTransform>
+                        </circle>
+                    </svg>
+                </div>
+                <div class="tab-pane fade show active" id="person-data" role="tabpanel" aria-labelledby="person-data-tab"></div>
+                <div class="tab-pane fade" id="my-order" role="tabpanel" aria-labelledby="my-order-tab">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        if (window.location.hash) {
+            $(window.location.hash).click();
+        }
+    });
+
+
+</script>
+

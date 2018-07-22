@@ -18,26 +18,17 @@
     <!-- Google Fonts -->
     @*<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Pacifico:300,400,700" rel="stylesheet">*@
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Pacifico|Russo+One" rel="stylesheet">
-
-    <!-- Bootstrap CSS File -->
-    <link href="~/TemplateSite/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Libraries CSS Files -->
-    <link href="~/TemplateSite/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="~/TemplateSite/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="~/TemplateSite/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="~/TemplateSite/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="~/TemplateSite/lib/magnific-popup/magnific-popup.css" rel="stylesheet">
-    <link href="~/TemplateSite/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-
-    <!-- Main Stylesheet File -->
-    <link href="~/TemplateSite/css/style.css" rel="stylesheet">
-
-    <!--Mine styles-->
-    <link href="~/Content/Site.css" rel="stylesheet" />
-
-    <script src="~/TemplateSite/lib/jquery/jquery.min.js"></script>
-
+    <script src="~/Scripts/jquery/jquery-3.3.1.js"></script>
+    @Styles.Render("~/Content/bootstrapCss")
+    @*https://useiconic.com/*@
+    @Styles.Render("~/Content/bootstrapIcon")
+    @Styles.Render("~/TemplateSite/lib/css")
+    <link href="~/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    @Styles.Render("~/TemplateSite/styleCSS")
+    @Styles.Render("~/Content/siteCss")
+    <link href="~/Content/bootstrap-float-label/bootstrap-float-label.min.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/SiteScript")
+    @Scripts.Render("/bundles/js/vue")
 </head>
 <body>
     @{ Html.RenderPartial("~/Views/_Partial/_Header.cshtml"); }
@@ -67,29 +58,7 @@
         </div>
     </footer><!-- #footer -->
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-    <!-- JavaScript Libraries -->
-    <script src="~/TemplateSite/lib/jquery/jquery-migrate.min.js"></script>
-    <script src="~/TemplateSite/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/TemplateSite/lib/easing/easing.min.js"></script>
-    <script src="~/TemplateSite/lib/superfish/hoverIntent.js"></script>
-    <script src="~/TemplateSite/lib/superfish/superfish.min.js"></script>
-    <script src="~/TemplateSite/lib/wow/wow.min.js"></script>
-    <script src="~/TemplateSite/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="~/TemplateSite/lib/magnific-popup/magnific-popup.min.js"></script>
-    <script src="~/TemplateSite/lib/sticky/sticky.js"></script>
-    @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>*@
-    <!-- Template Main Javascript File -->
-    <script src="~/TemplateSite/js/main.js"></script>
-
-    <script src="~/Scripts/statistics.js"></script>
-    <script src="~/Scripts/action.js"></script>
-    <script src="~/Scripts/site.js"></script>
-    <script src="~/Scripts/user/auth.js"></script>
-
-    <script src="~/Scripts/jquery/jquery.unobtrusive-ajax.min.js"></script>
-
-    <script src="~/Scripts/vue.min.js"></script>
-    <script src="~/Scripts/vue_components/like_component.js"></script>
+    @Scripts.Render("~/bundles/TemplateSite/Vendor/Script")
+    @Scripts.Render("~/bundles/jquery_unobtrusive_ajax")
 </body>
 </html>

@@ -17,7 +17,8 @@ namespace plan2plan.Controllers.Components
         private IFileRepository fileRepository;
         private IActionRepository actionRepository;
 
-        public ActionController(IFileRepository fileRepository, IActionRepository actionRepository)
+        public ActionController(IFileRepository fileRepository, 
+            IActionRepository actionRepository)
         {
             this.fileRepository = fileRepository;
             this.actionRepository = actionRepository;

@@ -11,6 +11,7 @@ namespace plan2plan.Domain.Core
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ID { get; set; }
+        public int? Order { get; set; }
         [DisplayName("Отображаемое имя")]
         public string Title { get; set; }
         [DisplayName("Описание")]

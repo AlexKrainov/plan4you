@@ -14,7 +14,9 @@ namespace plan2plan.Infrastructure.Data.Convert
     {
         public Statistics statistic;
         private IStatisticsRepository statisticsRepository;
-        public StatisticsWorker(IStatisticsRepository statisticsRepository, PersonViewModel person_Info, string sessionID)
+        public StatisticsWorker(IStatisticsRepository statisticsRepository,
+            PersonViewModel person_Info,
+            string sessionID)// Uri referrer)
         {
             this.statisticsRepository = statisticsRepository;
             statistic = new Statistics();
@@ -31,8 +33,13 @@ namespace plan2plan.Infrastructure.Data.Convert
             statistic.Location = person_Info.location;
             statistic.OS_name = person_Info.os_name;
             statistic.OS_version = person_Info.os_version;
-            statistic.Referrer = person_Info.referrer;
             statistic.Screen_size = person_Info.screen_size;
+
+            if (string.IsNullOrEmpty(person_Info.referrer) == false)
+            {
+                statistic.Referrer = person_Info.referrer.Substring(0, 50); //.Host;
+                statistic.FullReferrer = person_Info.referrer;
+            }
 
             if (statisticsRepository.GetStatisticsByIP(person_Info.ip) != null)// db.Statistics.Where(x => x.IP == person_Info.ip).Any())
             {

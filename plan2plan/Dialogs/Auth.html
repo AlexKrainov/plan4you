@@ -1,55 +1,122 @@
 ﻿<!-- Modal -->
 <div id="auth_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <!--data-ajax-failure="onFailureFeedback"-->
-        <!--<form action="/Feedback/Create" class="contactForm" data-ajax="true" data-ajax-failure="onFailureFeedback"
-              data-ajax-loading="#loading" data-ajax-loading-duration="800" data-ajax-mode="replace"
-              data-ajax-success="onSuccessFeedback" data-ajax-update="#results_feedback" id="feedback_form" method="post" role="form">-->
-        <form action="/Auth/LogIn" class="modal-content form" id="login_form" method="post" role="form"
-              data-ajax="true"
-              data-ajax-mode="replace"
-              data-ajax-success="onSuccessLogIn"
-              data-ajax-update="#login_container"
-              data-ajax-loading="#loading" data-ajax-loading-duration="800">
-            <div class="modal-header">
-                <h5 class="modal-title">Войти</h5>
-                <button class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+        <div class="modal-content">
             <div class="modal-body">
-                <div class="form-group">
-                    <label>Логин</label>
-                    <input class="form-control" type="text" id="login" name="login" required autofocus>
-                    <!--<p class="help-block">Example block-level help text here.</p>-->
+                <ul class="nav nav-tabs" id="myTabLogin" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="enter-tab" data-toggle="tab" href="#tab_enter" role="tab" aria-controls="Enter" aria-selected="true">Войти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="check-in-tab" data-toggle="tab" href="#check_in" role="tab" aria-controls="CheckIn" aria-selected="false">Регистрация</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="tab_enter" role="tabpanel" aria-labelledby="enter-tab">
+                        <form action="/Auth/LogIn" class="form" id="login_form" method="post" role="form"
+                              data-ajax="true"
+                              data-ajax-mode="replace"
+                              data-ajax-success="onSuccessLogIn"
+                              data-ajax-update="#login_container"
+                              data-ajax-loading="#loading" data-ajax-loading-duration="800">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>Почта</label>
+                                    <input class="form-control" type="text" name="email" required autofocus>
+                                    <!--<p class="help-block">Example block-level help text here.</p>-->
+                                </div>
+                                <div class="form-group">
+                                    <label>Пароль</label>
+                                    <input class="form-control" type="password" name="pwd" required>
+                                </div>
+                                <!--<div class="form-group">
+                                    <input class="check-box" data-val="true" id="remember" name="remember" type="checkbox" value="true">
+                                    <input name="remember" type="hidden" value="false">
+                                    <label>Запомнить ?</label>
+                                </div>-->
+                                <div class="form-group">
+                                    <a href="/User/ForgotPassword" onclick="addEmailToLolacStorage()">Забыли пароль?</a>
+                                </div>
+                                <p id="login_error_message" class="errormessage" style="display: none;"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                <button type="submit" class="btn btn-outline-primary" onclick="$('#login_error_message').hide('slow'); addEmailToLolacStorage(); return true;">Войти</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-body tab-pane fade" id="check_in" role="tabpanel" aria-labelledby="check-in-tab">
+                        <form action="/Auth/CheckIn" class="form" id="checkin_form" method="post" role="form"
+                              data-ajax="true"
+                              data-ajax-mode="replace"
+                              data-ajax-success="onSuccessCheckIn"
+                              data-ajax-update="#login_container"
+                              data-ajax-loading="#loading" data-ajax-loading-duration="800">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>Имя</label>
+                                    <input class="form-control" type="text" name="name">
+                                    <!--<p class="help-block">Example block-level help text here.</p>-->
+                                </div>
+                                <div class="form-group">
+                                    <label>Почта*</label>
+                                    <input class="form-control" type="email" name="email" required>
+                                    <!--<p class="help-block">Example block-level help text here.</p>-->
+                                </div>
+                                <div class="form-group">
+                                    <label>Пароль*</label>
+                                    <input class="form-control" type="password" name="pwd" required>
+                                </div>
+                                <p id="checkin_error_message" class="errormessage" style="display: none;"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                <button type="submit" class="btn btn-outline-primary" onclick="$('#checkin_error_message').hide('slow'); addEmailToLolacStorage(); return true;">Регистрация</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Пароль</label>
-                    <input class="form-control" type="password" id="pwd" name="pwd" required>
-                </div>
-                <div class="form-group">
-                    <input class="check-box" data-val="true" id="remember" name="remember" type="checkbox" value="true">
-                    <input name="remember" type="hidden" value="false">
-                    <label>Запомнить ?</label>
-                </div>
-
             </div>
-            <div class="modal-footer">
-                <!--<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>-->
-                <button type="submit" class="btn btn-outline-primary" id="enter">Войти</button>
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-<script>
-    //$('#login, #pwd').keypress(function (e) {
-    //    if (e.keyCode == 13)
-    //        $('#enter').click();
-    //});
+    <script>
+        $("#auth_modal").modal("show");
 
-    $("#auth_modal").modal("show");
-    
-    function onSuccessLogIn(result) {
-        $("#auth_modal").modal("hide");
-    }
-</script>
+        $('#auth_modal').on('hidden.bs.modal', function () {
+            $("#auth_modal").remove();
+        })
+
+        function onSuccessLogIn(result) {
+            if (result != undefined && result.is_ok == true) {
+                //if (result.is_have == false) {
+                $("#login_error_message").show("slow").text(result.message);
+                //}
+                return;
+            }
+            $("#auth_modal").modal("hide");
+        }
+        function onSuccessCheckIn(result) {
+            if (result != undefined && result.is_ok == true) {
+                //if (result.is_have == true) {
+                $("#checkin_error_message").show("slow").text(result.message);
+                //}
+                return;
+            }
+            $("#auth_modal").modal("hide");
+        }
+
+        function addEmailToLolacStorage() {
+            let mail = $("#login_form input[name=email]").val();
+            if (!mail) {
+                mail = $("#check_in input[name=email]").val();
+            }
+
+            if (mail) {
+                localStorage.setItem("email", mail);
+            }
+            
+        }
+
+    </script>
+</div>
+

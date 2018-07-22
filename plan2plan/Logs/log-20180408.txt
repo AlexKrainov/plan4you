@@ -1,0 +1,2 @@
+2018-04-08 00:08:48.160 +03:00 [Information] Start aplication!
+2018-04-08 21:28:28.136 +03:00 [Information] Start aplication!

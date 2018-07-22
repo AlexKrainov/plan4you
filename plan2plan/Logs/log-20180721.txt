@@ -1,0 +1,14 @@
+2018-07-21 00:01:54.028 +03:00 [Information] Start aplication!
+2018-07-21 00:02:01.172 +03:00 [Information] Get user from DB
+2018-07-21 00:04:59.550 +03:00 [Information] Start aplication!
+2018-07-21 00:05:01.684 +03:00 [Information] Get user from DB
+2018-07-21 00:20:36.307 +03:00 [Information] Start aplication!
+2018-07-21 00:20:39.041 +03:00 [Information] Get user from DB
+2018-07-21 00:20:40.766 +03:00 [Information] Get user from DB
+2018-07-21 00:31:19.701 +03:00 [Information] Start aplication!
+2018-07-21 00:31:20.683 +03:00 [Information] Get user from DB
+2018-07-21 00:31:23.806 +03:00 [Information] Get user from DB
+2018-07-21 00:32:48.837 +03:00 [Information] Start aplication!
+2018-07-21 00:32:51.516 +03:00 [Information] Get user from DB
+2018-07-21 00:37:12.504 +03:00 [Information] Start aplication!
+2018-07-21 00:37:13.464 +03:00 [Information] Get user from DB

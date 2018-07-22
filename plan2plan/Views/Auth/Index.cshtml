@@ -5,33 +5,72 @@
 }
 <section id="team" class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp; margin-bottom: 40px;">
     <div class="container">
-        @using (Html.BeginForm("Enter", "Auth", FormMethod.Get, new { @class = "modal-content form" }))
-        {
 
-            @Html.AntiForgeryToken()
-            <div class="modal-header">
-                <h5 class="modal-title">Войти</h5>
+        <ul class="nav nav-tabs" id="myTabLogin" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link @ViewBag.ActiveEnter" id="enter-tab" data-toggle="tab" href="#tab_enter" role="tab" aria-controls="Enter" aria-selected="true">Войти</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @ViewBag.ActiveCheckIn" id="check-in-tab" data-toggle="tab" href="#check_in" role="tab" aria-controls="CheckIn" aria-selected="false">Регистрация</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade @ViewBag.ActiveEnter" id="tab_enter" role="tabpanel" aria-labelledby="enter-tab">
+                @using (Html.BeginForm("Enter", "Auth", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @class = "modal-content form", style = "border-top: 0px;" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @*<div class="modal-header">
+                            <h5 class="modal-title">Войти</h5>
+                        </div>*@
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Почта</label>
+                            <input class="form-control" type="text" name="email" required autofocus value="@ViewBag.User.email">
+                            <!--<p class="help-block">Example block-level help text here.</p>-->
+                        </div>
+                        <div class="form-group">
+                            <label>Пароль</label>
+                            <input class="form-control" type="password" name="pwd" required value="@ViewBag.User.pwd">
+                        </div>
+                        @*<div class="form-group">
+                                <input class="check-box" data-val="true" id="remember" name="remember" type="checkbox" value="true">
+                                <input name="remember" type="hidden" value="false">
+                                <label>Запомнить ?</label>
+                            </div>*@
+                        <div class="errormessage">@ViewBag.ErrorMessage</div>
+                    </div>
+                    <div class="modal-footer">
+                        @Html.ActionLink("На главную", "Index", "Home", null, new { @class = "float-left" })
+                        <button type="submit" class="btn btn-outline-primary">Войти</button>
+                    </div>
+                }
             </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Логин</label>
-                    <input class="form-control" type="text" id="login" name="login" required>
-                    <!--<p class="help-block">Example block-level help text here.</p>-->
-                </div>
-                <div class="form-group">
-                    <label>Пароль</label>
-                    <input class="form-control" type="password" id="pwd" name="pwd" required>
-                </div>
-                <div class="form-group">
-                    <input class="check-box" data-val="true" id="remember" name="remember" type="checkbox" value="true">
-                    <input name="remember" type="hidden" value="false">
-                    <label>Запомнить меня ?</label>
-                </div>
-                <div class="errormessage">@ViewBag.ErrorMessage</div>
+            <div class=" tab-pane fade @ViewBag.ActiveCheckIn" id="check_in" role="tabpanel" aria-labelledby="check-in-tab">
+                @using (Html.BeginForm("CheckInPage", "Auth", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @class = "modal-content form", style = "border-top: 0px;" }))
+                {
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Имя</label>
+                            <input class="form-control" type="text" name="name" value="@ViewBag.User.name">
+                            <!--<p class="help-block">Example block-level help text here.</p>-->
+                        </div>
+                        <div class="form-group">
+                            <label>Почта*</label>
+                            <input class="form-control" type="email" name="email" value="@ViewBag.User.email" required>
+                            <!--<p class="help-block">Example block-level help text here.</p>-->
+                        </div>
+                        <div class="form-group">
+                            <label>Пароль*</label>
+                            <input class="form-control" type="password" name="pwd" required value="@ViewBag.User.pwd">
+                        </div>
+                        <div class="errormessage">@ViewBag.ErrorMessage</div>
+                    </div>
+                    <div class="modal-footer">
+                        @Html.ActionLink("На главную", "Index", "Home", null, new { @class = "float-left" })
+                        <button type="submit" class="btn btn-outline-primary">Регистрация</button>
+                    </div>
+                }
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-outline-primary">Войти</button>
-            </div>
-        }
+        </div>
     </div>
 </section>

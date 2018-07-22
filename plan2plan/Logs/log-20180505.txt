@@ -1,0 +1,48 @@
+2018-05-05 11:13:14.096 +03:00 [Information] Start aplication!
+2018-05-05 11:14:17.375 +03:00 [Information] Get user from DB
+2018-05-05 11:14:26.104 +03:00 [Information] Get user from DB
+2018-05-05 11:14:28.578 +03:00 [Information] Get user from DB
+2018-05-05 11:14:29.628 +03:00 [Information] Get user from DB
+2018-05-05 11:14:31.410 +03:00 [Information] Get user from DB
+2018-05-05 11:14:47.742 +03:00 [Information] Get user from DB
+2018-05-05 11:35:01.241 +03:00 [Information] Start aplication!
+2018-05-05 11:35:08.002 +03:00 [Information] Get user from DB
+2018-05-05 11:48:59.395 +03:00 [Information] Start aplication!
+2018-05-05 11:49:05.152 +03:00 [Information] Get user from DB
+2018-05-05 12:15:33.696 +03:00 [Information] Get user from DB
+2018-05-05 12:17:23.735 +03:00 [Information] Start aplication!
+2018-05-05 12:17:28.539 +03:00 [Information] Get user from DB
+2018-05-05 12:18:47.562 +03:00 [Information] Start aplication!
+2018-05-05 12:18:52.745 +03:00 [Information] Get user from DB
+2018-05-05 12:19:09.718 +03:00 [Information] Get user from DB
+2018-05-05 12:19:11.904 +03:00 [Information] Get user from DB
+2018-05-05 12:19:21.426 +03:00 [Information] Get user from DB
+2018-05-05 12:27:06.787 +03:00 [Information] Start aplication!
+2018-05-05 12:27:11.559 +03:00 [Information] Get user from DB
+2018-05-05 12:39:44.540 +03:00 [Information] Start aplication!
+2018-05-05 12:39:50.220 +03:00 [Information] Get user from DB
+2018-05-05 12:40:27.486 +03:00 [Information] Get user from DB
+2018-05-05 12:40:32.025 +03:00 [Information] Get user from DB
+2018-05-05 12:40:35.223 +03:00 [Information] Get user from DB
+2018-05-05 20:05:54.172 +03:00 [Information] Start aplication!
+2018-05-05 20:05:57.520 +03:00 [Information] Get user from DB
+2018-05-05 20:07:07.983 +03:00 [Information] Get user from DB
+2018-05-05 21:49:11.167 +03:00 [Information] Get user from DB
+2018-05-05 21:49:26.573 +03:00 [Information] Get user from DB
+2018-05-05 21:49:29.038 +03:00 [Information] Get user from DB
+2018-05-05 21:49:55.435 +03:00 [Information] Get user from DB
+2018-05-05 21:50:15.336 +03:00 [Information] Get user from DB
+2018-05-05 21:50:47.592 +03:00 [Information] Get user from DB
+2018-05-05 21:52:59.553 +03:00 [Information] Get user from DB
+2018-05-05 21:54:09.163 +03:00 [Information] Get user from DB
+2018-05-05 22:00:26.738 +03:00 [Information] Start aplication!
+2018-05-05 22:00:29.240 +03:00 [Information] Get user from DB
+2018-05-05 22:07:52.256 +03:00 [Information] Start aplication!
+2018-05-05 22:07:59.245 +03:00 [Information] Get user from DB
+2018-05-05 22:08:47.656 +03:00 [Error] Ошибка при создании файла
+System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в plan2plan.Controllers.FileController.Create(File file, HttpPostedFileBase[] main_file) в C:\Users\Alex\Source\Repos\plan2plan_VS2015\plan2plan\Controllers\Components\FileController.cs:строка 76
+2018-05-05 22:12:15.624 +03:00 [Information] Start aplication!
+2018-05-05 22:12:21.689 +03:00 [Information] Get user from DB
+2018-05-05 22:42:44.967 +03:00 [Information] Start aplication!
+2018-05-05 22:42:51.269 +03:00 [Information] Get user from DB

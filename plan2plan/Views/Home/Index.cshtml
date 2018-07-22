@@ -23,13 +23,38 @@
     </div>
 </section><!-- #intro -->
 <main id="main">
+    @*<section id="about" class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 about-img">
+                        <img src="~/Source/Images/box.jpg" alt="" style="opacity: 0.7;border-radius: 10px;" />
+                    </div>
+                    <div class="col-lg-6 content">
+                        <h1>Книжные сеты-старт продаж в апреле</h1>
+                        <h3>
+                            Книжный сет - отличный подарок со смыслом для тех, кто любит читать и при этом погружаться в книгу.
+
+                            Пример наполнения книжного сета:
+                        </h3>
+
+                        <ul>
+                            <li><i class="ion-android-checkmark-circle"></i> Книга, выбранная из доступного списка</li>
+                            <li><i class="ion-android-checkmark-circle"></i> Связанные с этой книгой предметы - еда, открытки, рецепты, канцелярия - наполнение каждой коробки зависит от выбранного произведения.</li>
+                        </ul>
+                        <h3 style="color: red;">До конца апреля можно оформить предзаказ на сет со скидкой 5%</h3>
+                    </div>
+                </div>
+            </div>
+        </section>*@
 
     @{ Html.RenderPartial("PreviewDocs", (List<plan2plan.Domain.Core.File>)ViewBag.PreviewFiles); }
 
-    @*@{ Html.RenderPartial("PreviewBox"); }*@
+    @{ Html.RenderPartial("PreviewBox"); }
 
     @{ Html.RenderPartial("PreviewInstagram");}
 
     @{ Html.RenderPartial("PreviewFeedback"); }
 
 </main>
+
+

@@ -1,0 +1,6 @@
+2018-07-20 23:13:48.562 +03:00 [Information] Start aplication!
+2018-07-20 23:27:59.751 +03:00 [Information] Start aplication!
+2018-07-20 23:30:16.290 +03:00 [Information] Start aplication!
+2018-07-20 23:30:17.189 +03:00 [Information] Get user from DB
+2018-07-20 23:36:58.831 +03:00 [Information] Start aplication!
+2018-07-20 23:37:02.220 +03:00 [Information] Get user from DB

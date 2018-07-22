@@ -1,0 +1,10 @@
+2018-05-12 22:45:01.308 +03:00 [Information] Start aplication!
+2018-05-12 23:17:17.525 +03:00 [Information] Start aplication!
+2018-05-12 23:17:34.091 +03:00 [Information] Get user from DB
+2018-05-12 23:21:46.973 +03:00 [Information] Start aplication!
+2018-05-12 23:21:52.054 +03:00 [Information] Get user from DB
+2018-05-12 23:21:52.055 +03:00 [Information] Get user from DB
+2018-05-12 23:26:22.243 +03:00 [Information] Start aplication!
+2018-05-12 23:26:26.735 +03:00 [Information] Get user from DB
+2018-05-12 23:26:26.735 +03:00 [Information] Get user from DB
+2018-05-12 23:26:34.078 +03:00 [Information] Get user from DB

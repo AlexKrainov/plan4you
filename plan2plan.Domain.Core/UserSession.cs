@@ -11,7 +11,7 @@ namespace plan2plan.Domain.Core
     {
         public int ID { get; set; }
         [Required]
-        public int UserID { get; set; }
+        public Guid UserID { get; set; }
         [Required]
         public string SessionID { get; set; }
         [Required]

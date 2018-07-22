@@ -36,9 +36,23 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.2.0\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.6.0\lib\net45\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.4.0.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,6 +65,8 @@
     <Compile Include="Components\EmailRepository.cs" />
     <Compile Include="Components\FeedbackRepository.cs" />
     <Compile Include="Components\FileRepository.cs" />
+    <Compile Include="Components\LetterRepository.cs" />
+    <Compile Include="Components\LetterTypeRepository.cs" />
     <Compile Include="Components\StatisticsRepository.cs" />
     <Compile Include="Components\UserRepository.cs" />
     <Compile Include="Components\UserSessionRepository.cs" />
@@ -58,21 +74,9 @@
     <Compile Include="Convert\ActionWorker.cs" />
     <Compile Include="Convert\FeedbackWorker.cs" />
     <Compile Include="Convert\StatisticsWorker.cs" />
-    <Compile Include="Migrations\201803181458114_plan2plan.cs" />
-    <Compile Include="Migrations\201803181458114_plan2plan.Designer.cs">
-      <DependentUpon>201803181458114_plan2plan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803221530251_plan2plan_3.cs" />
-    <Compile Include="Migrations\201803221530251_plan2plan_3.Designer.cs">
-      <DependentUpon>201803221530251_plan2plan_3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803221554179_plan2plan_4.cs" />
-    <Compile Include="Migrations\201803221554179_plan2plan_4.Designer.cs">
-      <DependentUpon>201803221554179_plan2plan_4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803240807064_plan2plan_5.cs" />
-    <Compile Include="Migrations\201803240807064_plan2plan_5.Designer.cs">
-      <DependentUpon>201803240807064_plan2plan_5.cs</DependentUpon>
+    <Compile Include="Migrations\201805021838468_plan2plan.cs" />
+    <Compile Include="Migrations\201805021838468_plan2plan.Designer.cs">
+      <DependentUpon>201805021838468_plan2plan.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="plat2platContext.cs" />
@@ -97,18 +101,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803181458114_plan2plan.resx">
-      <DependentUpon>201803181458114_plan2plan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803221530251_plan2plan_3.resx">
-      <DependentUpon>201803221530251_plan2plan_3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803221554179_plan2plan_4.resx">
-      <DependentUpon>201803221554179_plan2plan_4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803240807064_plan2plan_5.resx">
-      <DependentUpon>201803240807064_plan2plan_5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805021838468_plan2plan.resx">
+      <DependentUpon>201805021838468_plan2plan.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

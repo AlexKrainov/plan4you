@@ -1,0 +1,19 @@
+﻿@model plan2plan.Domain.Core.ModelView.StatisticsInfoIPViewModel
+
+
+<div class="card">
+    <div class="card-header">
+        <h2><b>IP:</b> @Model.statistics.IP @Model.statistics.Country - @Model.statistics.City</h2>
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            @if (Model.email != null)
+            {
+                <li class="list-group-item"><b>Email:</b> @Model.email.Mail</li>
+            }
+            <li class="list-group-item"><b>Сколько раз заходил: </b><span class="badge badge-success">@Model.CountCome</span></li>
+            <li class="list-group-item"><b>Сколько раз лайкал: </b><span class="badge badge-success">@Model.CountLike</span></li>
+            <li class="list-group-item"><b>Сколько раз скачивал:</b><span class="badge badge-success">@Model.CountDownload</span></li>
+        </ul>
+    </div>
+</div>

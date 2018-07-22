@@ -1,5 +1,5 @@
 ﻿Vue.component("vue-like", {
-    template: ' <span><span>{{ count_like }}</span><a href="" onclick="return false;" v-on:click="onLike()" v-bind:class="{ not_selected: not_selected }"><i class="fa fa-heart"></i></a></span>',
+    template: '<span><span>{{ count_like }}</span><a href="" onclick="return false;" v-on:click="onLike(this)" v-bind:class="{ not_selected: not_selected }"><i class="fa fa-heart"></i></a></span>',
     props: ["doctype", "id", "count_like", "not_selected"],
     data: function () {
         if (this.doctype == "check_sheets") {

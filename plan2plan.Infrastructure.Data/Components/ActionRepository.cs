@@ -52,7 +52,7 @@ namespace plan2plan.Infrastructure.Data.Components
             return await context.SaveChangesAsync();
         }
 
-        public void Update(string ip, Guid fileID)
+        public void CreateOrUpdate(string ip, Guid fileID)
         {
             Action action = context.Actions.FirstOrDefault(x => x.IP == ip && x.FileID == fileID);
 
@@ -71,6 +71,16 @@ namespace plan2plan.Infrastructure.Data.Components
                 });
             }
 
+        }
+
+        public int GetCountLikeByIP(string ip)
+        {
+            return context.Actions.Count(x => x.IP == ip && x.isLike == true);
+        }
+
+        public int GetCountDownloadsByIP(string ip)
+        {
+            return context.Actions.Count(x => x.IP == ip && x.isDownload == true);
         }
     }
 }

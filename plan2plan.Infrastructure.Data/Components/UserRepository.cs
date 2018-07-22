@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
+
 
 namespace plan2plan.Infrastructure.Data.Components
 {
@@ -17,9 +19,18 @@ namespace plan2plan.Infrastructure.Data.Components
             this.context = context;
         }
 
-        public User GetUser(int userID, string login)
+        public User GetUserByID(Guid userID)
         {
-            return context.Users.FirstOrDefault(x => x.ID == userID && x.Login == login);
+            return context.Users
+                .Include(x => x.UserType)
+                .Include(x => x.Email)
+                .FirstOrDefault(x => x.ID == userID);
+        }
+        public User GetUser(string email, string password)
+        {
+            return context.Users
+               .Include("UserType").Include(x => x.Email)
+               .FirstOrDefault(x => x.Email.Mail == email && x.Password == password);
         }
 
         /// <summary>
@@ -28,20 +39,67 @@ namespace plan2plan.Infrastructure.Data.Components
         /// <param name="login"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public int GetUserID(string login, string password)
+        public Guid GetUserID(string email, string password)
         {
-            User user = context.Users.FirstOrDefault(x => x.Login == login && x.Password == password);
+            User user = context.Users.Include( x => x.Email).FirstOrDefault(x => x.Email.Mail == email && x.Password == password);
 
             if (user != null)
             {
                 return user.ID;
             }
-            return -1;
+            return Guid.Empty;
+        }
+        
+        public void Create(User user)
+        {
+            context.Users.Add(user);
         }
 
-        public bool isUserExist(string login, string password)
+        public int Save()
         {
-            return context.Users.Any(x => x.Login == login && x.Password == password);
+            return context.SaveChanges();
         }
+
+        public Task<int> SaveAsync()
+        {
+            return context.SaveChangesAsync();
+        }   
+
+        public bool isUserExistByEmailAndPassword(string email, string password)
+        {
+            return context.Users.Include(x => x.Email).Any(x => x.Email.Mail == email && x.Password == password);
+        }
+
+        public bool isUserExistByEmail(string email)
+        {
+            return context.Users.Include(x => x.Email).Any(x => x.Email.Mail == email);
+        }
+
+        public User GetUserByEmail(string mail)
+        {
+            return context.Users.Include(x => x.Email).FirstOrDefault(x => x.Email.Mail == mail);
+        }
+
+        public async Task<User> GetUserByEmailAsync(string mail)
+        {
+            return await context.Users.Include(x => x.Email).FirstOrDefaultAsync(x => x.Email.Mail == mail);
+        }
+
+        public bool UpdatePassword(Guid id, string newPassword)
+        {
+            var user = context.Users.FirstOrDefault(x => x.ID == id);
+            if (user != null)
+            {
+                user.Password = newPassword;
+                return true;
+            }
+            return false;
+        }
+
+        public void Update(User user)
+        {
+            context.Entry(user).State = EntityState.Modified;
+        }
+
     }
 }

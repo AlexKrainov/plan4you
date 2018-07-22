@@ -1,0 +1,6 @@
+2018-04-12 20:00:15.281 +03:00 [Information] Start aplication!
+2018-04-12 20:53:15.900 +03:00 [Information] Start aplication!
+2018-04-12 21:28:16.265 +03:00 [Information] Start aplication!
+2018-04-12 23:11:59.025 +03:00 [Information] Start aplication!
+2018-04-12 23:26:46.605 +03:00 [Information] Start aplication!
+2018-04-12 23:41:01.077 +03:00 [Information] Start aplication!

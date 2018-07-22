@@ -16,5 +16,6 @@ namespace plan2plan.Domain.Interfaces
         Statistics GetStatisticsByID(int id);
         Statistics GetStatisticsByIP(string ip);
         IEnumerable<Statistics> GetAllStatistics();
+        int GetAllVisitByNameRegion(List<string> regions);
     }
 }

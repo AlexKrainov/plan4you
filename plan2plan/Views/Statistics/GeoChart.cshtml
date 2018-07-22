@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "GeoChart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+<script type='text/javascript'>
+    google.charts.load('current', {
+        'packages': ['geochart'],
+        "language": "ru",
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+    });
+    google.charts.setOnLoadCallback(drawMarkersMap);
+    @{
+        var jsonModel = Json.Encode(Model);
+    }
+    var model = JSON.parse(replaceAll('@jsonModel', "&quot;", '"'));
+    var data1 = [];
+    data1.push(['Region', 'visited']);
+    for (var i = 0; i < model.length; i++) {
+        data1.push([model[i].Key, model[i].Value]);
+    }
+    function drawMarkersMap() {
+        var data = google.visualization.arrayToDataTable(data1);
+        //[['Санкт-Петербург', 2761477],
+        //['Курская область', 1324110],
+        //['МО', 959574]]
+
+        var options = {
+            //region: 'IT',
+            displayMode: 'markers',
+            colorAxis: { colors: ['lightblue', 'blue'] }
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    };
+</script>
+<div id="chart_div" style="width:99%;"></div>

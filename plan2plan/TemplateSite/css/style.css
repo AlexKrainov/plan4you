@@ -904,10 +904,15 @@ body.mobile-nav-active {
     color: #fff;
 }
 
-    #call-to-action .cta-btn:hover {
-        background: #06e763;
-        border: 3px solid #06e763;
-    }
+.text-new-font {
+    font-family: "Pacifico", sans-serif;
+    display: inline-block;
+}
+
+#call-to-action .cta-btn:hover {
+    background: #06e763;
+    border: 3px solid #06e763;
+}
 
 /* Our Team Section
 --------------------------------*/
@@ -1078,7 +1083,7 @@ form .errormessage {
     font-size: 15px;
 }
 
-.form button[type="submit"], .form button[type="button"] { /*#contact .form button[type="submit"] {*/
+button[type="submit"], button[type="button"] { /*#contact .form button[type="submit"] {*/ /*.form*/ 
     background: #06e763;
     border: 0;
     border-radius: 3px;

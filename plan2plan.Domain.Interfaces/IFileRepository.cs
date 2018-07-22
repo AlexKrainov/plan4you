@@ -11,7 +11,12 @@ namespace plan2plan.Domain.Interfaces
     {
         void Create(File file);
         void Update(File file);
-        void Delete(Guid id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>return path + file name for delete</returns>
+        string Delete(Guid id);
         Task<File> GetFileByIDTask(Guid id);
         File GetFileByID(Guid id);
         void Save();

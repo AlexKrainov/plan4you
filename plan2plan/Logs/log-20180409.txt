@@ -1,0 +1,6 @@
+2018-04-09 10:03:52.388 +03:00 [Information] Start aplication!
+2018-04-09 10:08:48.483 +03:00 [Information] Start aplication!
+2018-04-09 10:11:50.868 +03:00 [Information] Start aplication!
+2018-04-09 16:16:58.404 +03:00 [Information] Start aplication!
+2018-04-09 16:31:39.701 +03:00 [Information] Start aplication!
+2018-04-09 17:00:40.029 +03:00 [Information] Start aplication!

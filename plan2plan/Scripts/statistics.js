@@ -6,8 +6,8 @@
         statistics.person_data.city = response.region_name;
         statistics.person_data.country = response.country_name;
         //person_data.hostname = response.hostname;
-        statistics.person_data.location = response.latitude + ", " + response.longitude,
-            statistics.person_data.index = response.zip_code;
+        statistics.person_data.location = response.latitude + ", " + response.longitude;
+        statistics.person_data.index = response.zip_code;
 
     }, "jsonp").then(function () {
         statistics.get_browser_info();
@@ -16,7 +16,7 @@
         statistics.person_data.browser_version = window.jscd.browserMajorVersion;
         statistics.person_data.os_name = window.jscd.os;
         statistics.person_data.os_version = window.jscd.osVersion;
-        statistics.person_data.isMobile = window.jscd.mobile;
+        statistics.person_data.is_mobile = window.jscd.mobile;
         statistics.person_data.screen_size = window.jscd.screen;
         statistics.person_data.referrer = document.referrer;
 

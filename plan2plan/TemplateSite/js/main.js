@@ -10,7 +10,7 @@ jQuery(document).ready(function ($) {
         }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
+        $('html, body').animate({ scrollTop: 0 }, 350, 'easeInOutExpo');
         return false;
     });
 
@@ -34,7 +34,7 @@ jQuery(document).ready(function ($) {
         animation: {
             opacity: 'show'
         },
-        speed: 400
+        speed: 100
     });
 
     // Mobile Navigation
@@ -173,5 +173,14 @@ jQuery(document).ready(function ($) {
 
 // Preloader
 $(window).on('load', function () {
-    $('#preloader').delay(100).fadeOut('slow', function () { $(this).remove(); });
+    $('#preloader').delay(25).fadeOut('slow', function () { $(this).remove(); });
 });
+
+//var loading = {
+//    show: function () {
+//        $("#loading").show("slow");
+//    },
+//    hide: function () {
+//        $("#loading").hide("slow");
+//    }
+//}

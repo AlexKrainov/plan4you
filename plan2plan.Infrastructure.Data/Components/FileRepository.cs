@@ -23,14 +23,19 @@ namespace plan2plan.Infrastructure.Data.Components
             context.Files.Add(file);
         }
 
-        public void Delete(Guid id)
+        public string Delete(Guid id)
         {
             File file = context.Files.Find(id);
 
             if (file != null)
             {
-                file.isDelete = true;
+                string path = file.Path;
+                //file.isDelete = true;
+                context.Files.Remove(file);
+                return path;
             }
+
+            return "";
         }
 
         public async Task<Domain.Core.File> GetFileByIDTask(Guid id)

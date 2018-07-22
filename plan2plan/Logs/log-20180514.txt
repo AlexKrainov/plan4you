@@ -1,0 +1,3 @@
+2018-05-14 14:20:33.310 +03:00 [Information] Start aplication!
+2018-05-14 14:20:45.136 +03:00 [Information] Get user from DB
+2018-05-14 16:23:48.721 +03:00 [Information] Get user from DB

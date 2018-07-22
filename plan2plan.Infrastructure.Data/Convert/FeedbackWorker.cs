@@ -1,5 +1,6 @@
 ﻿using plan2plan.Domain.Core;
 using plan2plan.Domain.Core.ModelView;
+using plan2plan.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +18,12 @@ namespace plan2plan.Infrastructure.Data.Convert
             this.feedbackView = feedbackView;
         }
 
-        public Feedback GetModelFeedback()
+        public Feedback GetModelFeedback(IEmailRepository emailRepository, string ip)
         {
             return new Feedback
             {
                 DateTime = DateTime.Now,
-                Email = new Email
-                {
-                    Mail = feedbackView.email
-                },
+                Email = emailRepository.GetOrCreateEmail(feedbackView.email, ip),
                 Message = feedbackView.message,
                 Name = feedbackView.name
             };

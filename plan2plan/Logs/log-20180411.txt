@@ -1,0 +1,15 @@
+2018-04-11 11:09:30.355 +03:00 [Information] Start aplication!
+2018-04-11 11:26:49.001 +03:00 [Information] Start aplication!
+2018-04-11 12:08:55.686 +03:00 [Information] Start aplication!
+2018-04-11 12:21:23.222 +03:00 [Information] Start aplication!
+2018-04-11 13:50:30.145 +03:00 [Information] Start aplication!
+2018-04-11 13:56:34.283 +03:00 [Information] Start aplication!
+2018-04-11 13:57:45.325 +03:00 [Information] Start aplication!
+2018-04-11 14:37:19.989 +03:00 [Information] Start aplication!
+2018-04-11 14:51:18.013 +03:00 [Information] Start aplication!
+2018-04-11 17:44:55.149 +03:00 [Information] Start aplication!
+2018-04-11 18:08:54.549 +03:00 [Information] Start aplication!
+2018-04-11 21:37:03.362 +03:00 [Information] Start aplication!
+2018-04-11 21:50:34.699 +03:00 [Information] Start aplication!
+2018-04-11 22:07:25.779 +03:00 [Information] Start aplication!
+2018-04-11 22:18:50.701 +03:00 [Information] Start aplication!

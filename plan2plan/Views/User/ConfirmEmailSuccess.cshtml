@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "ConfirmEmailSuccess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row" style="position: relative;padding: 1rem;margin: 1rem -15px 0;border-width: .2rem 0 0;">
+        <div class="col-md-8 order-md-1">
+            <div class="row">
+                <div class="col-md-8 mb-3">
+                    <div class="card-body">
+                        @if (string.IsNullOrEmpty(ViewBag.Success) == false)
+                        {
+                            <div class="alert alert-success">
+                                @ViewBag.Success @Html.ActionLink("вернуться на главную страницу", "Index", "Home", null, new { @class = "alert-link", style = "text-decoration: underline;" })
+                            </div>
+                        }
+                        @if (string.IsNullOrEmpty(ViewBag.isErrorLink) == false)
+                        {
+                            <div class="alert alert-danger">
+                                Если вы видите данное сообщение, то произошла ошибка при подтверждении почты. Пожалуяста пройдите по <a href="http://www.plan2plan.ru/Home/Index?#contact">ссылке</a> и напишите нам об этом.
+                            </div>
+                        }
+                        @if (string.IsNullOrEmpty(ViewBag.ErrorMessage) == false)
+                        {
+                            <div class="alert alert-warning">
+                                @ViewBag.ErrorMessage  <a href="http://www.plan2plan.ru/Home/Index?#contact">Написать нам</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

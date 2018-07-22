@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace plan2plan.Infrastructure.Data.Components
 {
@@ -21,14 +22,21 @@ namespace plan2plan.Infrastructure.Data.Components
             context.UserSessions.Add(userSession);
         }
 
+        public UserSession GetUserSessionBySessionID(string sessionID, DateTime date)
+        {
+            return context.UserSessions.Include(x => x.User)
+                 .FirstOrDefault(x => x.SessionID == sessionID && x.Start > date && x.Finish == null);
+        }
+
         public int Save()
         {
             return context.SaveChanges();
         }
 
-        public void Update(string ip, int userID)
+        public void Update(string ip, Guid userID)
         {
-            UserSession userSession = context.UserSessions.OrderByDescending( x=> x.ID).FirstOrDefault(x => x.IP == ip && x.UserID == userID);
+            UserSession userSession = context.UserSessions.OrderByDescending(x => x.ID)
+                .FirstOrDefault(x => x.IP == ip && x.UserID == userID);
 
             if (userSession != null)
             {
